@@ -11,6 +11,15 @@ body {
     text-rendering: optimizelegibility;
 }
 
+::selection {
+    background: darken($main-color-darker, 10%);
+    color: $font-light;
+}
+::moz-selection {
+    background: darken($main-color-darker, 10%);
+    color: $font-light;
+}
+
 #top {
     width: 32px;
     height: 32px;
@@ -195,6 +204,46 @@ main {
         margin: 0 auto;
         padding: 128px 8px 64px;
     }
+}
+
+
+.preview__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: stretch;
+}
+.preview {
+    width: 236px;
+    height: auto;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    margin-bottom: 16px;
+}
+.preview__title {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 4px 0;
+    text-align: center;
+    color: $main-color-darker;
+    border-top: 4px solid rgba($main-color, 0.4);
+    width: 208px;
+    margin: 0 auto;
+    margin-top: 4px;
+}
+.preview__image {
+    opacity: 0.8;
+    border: 1px solid $border-dark;
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
+}
+.preview__description {
+    text-align: left;
+    padding: 4px 16px;
+    font-size: 14px;
 }
 
 .description {

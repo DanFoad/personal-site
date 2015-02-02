@@ -1,0 +1,569 @@
+@import 'reset';
+@import 'colours';
+@import 'fonts';
+@import 'mixins';
+@import 'media';
+
+/**** GENERAL ****/
+body {
+    font: $body-font;
+    color: $font-dark;
+    text-rendering: optimizelegibility;
+}
+
+::selection {
+    background: darken($main-color-darker, 10%);
+    color: $font-light;
+}
+::moz-selection {
+    background: darken($main-color-darker, 10%);
+    color: $font-light;
+}
+
+#top {
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.2em;
+    display: none;
+    background-color: $main-color;
+    color: #FFFFFF;
+    @include transition(background-color, 0.1s);
+    @include border-radius(2px);
+    position: fixed;
+    right: 56px;
+    bottom: 48px;
+    cursor: pointer;
+    z-index: 50;
+
+    &:hover {
+        background-color: $background-dark;
+    }
+}
+
+/**** HEADER ****/
+.heading {
+    width: 100%;
+    height: 96px;
+    line-height: 96px;
+    font-size: 1.8em;
+    background: url('about.png') 50% -640px no-repeat $main-color;
+    color: #FFFFFF;
+    @include text-shadow(1px, 1px, 0, rgba(0,0,0,0.4));
+    padding-left: 64px;
+    border-bottom: 8px solid rgba($main-color-darker, 0.3);
+    position: relative;
+    z-index: 10;
+
+    .fa-angle-right {
+        color: lighten($main-color-lighter, 10%);
+        font-size: 0.8em;
+        display: inline-block;
+        height: 96px;
+        line-height: 90px;
+        vertical-align: middle;
+        margin: 0 8px;
+    }
+}
+
+header {
+    width: 100%;
+    height: 64px;
+    line-height: 64px;
+    z-index: 7;
+    position: relative;
+    border-bottom: 1px solid $border-dark;
+    background-color: #FFFFFF;
+
+    h1 {
+        font: $header-font;
+        color: $font-dark;
+        display: inline-block;
+        width: auto;
+        text-transform: lowercase;
+        margin-right: 8px;
+        cursor: pointer;
+    }
+
+    h3 {
+        color: $font-darker;
+        display: inline-block;
+        width: auto;
+        text-transform: lowercase;
+    }
+
+    .header__left {
+        padding-left: 16px;
+        padding-right: 92px;
+        background: linear-gradient(315deg, transparent 20px, $border-dark 0px) repeat scroll right bottom transparent;
+        position: absolute;
+        height: 64px;
+        width: auto;
+        left: 0;
+        top: 0;
+        z-index: 9;
+    }
+}
+.header--fixed {
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+#header__logo {
+    display: block;
+    width: 128px;
+    height: 128px;
+    position: absolute;
+    top: -26px;
+    z-index: 5;
+    left: 64px;
+}
+
+/**** NAVIGATION ****/
+.nav__main {
+    width: 1024px;
+    height: 64px;
+    line-height: 64px;
+    position: absolute;
+    z-index: 5;
+    background: #FFFFFF;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 auto;
+    border-bottom: 1px solid $border-dark;
+
+    .nav__container {
+        display: block;
+    }
+}
+
+.nav__container {
+    height: 64px;
+    width: 1024px;
+    display: inline-block;
+    margin: 0 auto;
+    text-align: right;
+
+    ul {
+        list-style: none;
+        height: 64px;
+    }
+
+    li {
+        display: inline-block;
+        width: auto;
+        padding-left: 24px;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 12px;
+        cursor: pointer;
+        @include transition(color);
+        
+        &:first-child {
+            padding-left: 0;
+        }
+
+        &:left-child {
+            padding-right: 24px;
+        }
+
+        &:hover {
+            color: $main-color;
+        }
+    }
+}
+
+.nav__filler {
+    display: none;
+    width: 100%;
+    height: 64px;
+    position: relative;
+    background-color: #FFFFFF;
+}
+
+/**** MAIN ****/
+main {
+    background-color: $background-light;
+    padding: 64px 0;
+
+    &>div {
+        width: 1024px;
+        margin: 0 auto;
+        padding: 16px 16px;
+        border-top: 1px solid $border-dark;
+    }
+
+    h2 {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-left: -16px;
+        margin-bottom: 32px;
+        cursor: pointer;
+    }
+    h2:before {
+        content: "# ";
+        color: $main-color-lighter;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin: 16px 0;
+    }
+}
+
+/**** FOOTER ****/
+footer {
+    height: 64px;
+    line-height: 63px;
+    background-color: $background-dark;
+    color: $font-lighter;
+    padding-left: 32px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    position: relative;
+
+    img {
+        height: 32px;
+        width: 32px;
+        vertical-align: middle;
+        margin-right: 16px;
+    }
+
+    .nav__container {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+}
+
+/**** Hold-To-Confirm Buttons ****/
+.hold-button {
+    background-color: $background-light;
+    width: 128px;
+    height: 32px;
+    @include border-radius(2px);
+    border: 1px solid $border-dark;
+    color: $font-light;
+    cursor: pointer;
+    @include transition(all);
+    position: relative;
+    margin-left: 64px;
+    background-color: $main-color;
+    font-size: 12px;
+    text-transform: uppercase;
+
+    &:active, &:focus {
+        outline: 0;
+        -webkit-appearance: none;
+    }
+}
+
+.hold-button__bottom-bar {
+    &:before {
+        content: "";
+        width: 0%;
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        height: 2px;
+        background-color: #D43444;
+        @include transition(width, 0s);
+    }
+    
+    &:hover {
+        background-color: darken($main-color, 5%);
+    }
+    &:active {
+        background-color: $main-color-darker;
+    }
+    &:active:before {
+        width: 100%;
+        @include transition(width, 2s, linear);
+    }
+}
+
+.hold-button__top-bar {
+    &:before {
+        content: "";
+        width: 0%;
+        position: absolute;
+        top: -2px;
+        left: 0;
+        height: 2px;
+        background-color: #D43444;
+        @include transition(width, 0s);
+    }
+    
+    &:hover {
+        background-color: darken($main-color, 5%);
+    }
+    &:active {
+        background-color: $main-color-darker;
+    }
+    &:active:before {
+        width: 100%;
+        @include transition(width, 2s, linear);
+    }
+}
+
+.hold-button__both-bar {
+    &:before {
+        content: "";
+        width: 0%;
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        height: 2px;
+        background-color: #D43444;
+        @include transition(width, 0s);
+    }
+    &:after {
+        content: "";
+        width: 0%;
+        position: absolute;
+        top: -2px;
+        left: 0;
+        height: 2px;
+        background-color: #D43444;
+        @include transition(width, 0s);
+    }
+    
+    &:hover {
+        background-color: darken($main-color, 5%);
+    }
+    &:active {
+        background-color: $main-color-darker;
+    }
+    &:active:before, &:active:after {
+        width: 100%;
+        @include transition(width, 2s, linear);
+    }
+}
+
+.hold-button__centre-bar {
+    &:before {
+        content: "";
+        width: 0%;
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        height: 2px;
+        background-color: #D43444;
+        @include transition(width, 0s);
+    }
+    &:after {
+        content: "";
+        width: 0%;
+        position: absolute;
+        top: -2px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        height: 2px;
+        background-color: #D43444;
+        @include transition(width, 0s);
+    }
+    
+    &:hover {
+        background-color: darken($main-color, 5%);
+    }
+    &:active {
+        background-color: $main-color-darker;
+    }
+    &:active:before, &:active:after {
+        width: 100%;
+        @include transition(width, 2s, linear);
+    }
+}
+
+.hold-button__left-fill {
+    &:before {
+        content: "";
+        width: 0%;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        height: 100%;
+        background-color: rgba(0,0,0,0.4);
+        @include transition(width, 0s);
+    }
+    
+    &:hover {
+        background-color: darken($main-color, 5%);
+    }
+    &:active {
+        background-color: $main-color-darker;
+    }
+    &:active:before {
+        width: 100%;
+        @include transition(width, 2s, linear);
+    }
+}
+
+.hold-button__right-fill {
+    &:before {
+        content: "";
+        width: 0%;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        height: 100%;
+        background-color: rgba(0,0,0,0.4);
+        @include transition(width, 0s);
+    }
+    
+    &:hover {
+        background-color: darken($main-color, 5%);
+    }
+    &:active {
+        background-color: $main-color-darker;
+    }
+    &:active:before {
+        width: 100%;
+        @include transition(width, 2s, linear);
+    }
+}
+
+.hold-button__centre-fill {
+    &:before {
+        content: "";
+        width: 0%;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        height: 100%;
+        background-color: rgba(0,0,0,0.4);
+        @include transition(width, 0s);
+    }
+    
+    &:hover {
+        background-color: darken($main-color, 5%);
+    }
+    &:active {
+        background-color: $main-color-darker;
+    }
+    &:active:before {
+        width: 100%;
+        @include transition(width, 2s, linear);
+    }
+}
+
+.hold-button-circle {
+    background-color: $main-color-lighter;
+    width: 32px;
+    height: 32px;
+    @include border-radius(100%);
+    border: 1px solid $border-dark;
+    color: $main-color-darker;
+    @include text-shadow(1px, 1px, 0, rgba(0,0,0,0.2));
+    cursor: pointer;
+    @include transition(all);
+    position: relative;
+    margin-left: 64px;
+    text-align: center;
+
+    &:active, &:focus {
+        outline: 0;
+        -webkit-appearance: none;
+    }
+}
+
+.hold-button-circle__in-circle {
+    &:before {
+        content: "";
+        width: 0%;
+        position: absolute;
+        left: 0;
+        right:0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        height: 0%;
+        @include border-radius(100%);
+        @include transition(all, 0s);
+        background-color: rgba(0,0,0,0.4);
+    }
+
+    &:hover {
+        background-color: darken($main-color-lighter, 5%);
+    }
+    &:active {
+        background-color: $main-color;
+    }
+    &:active:before {
+        width: 100%;
+        height: 100%;
+        @include transition(all, 2s, linear);
+    }
+}
+
+.hold-button-circle__out-circle {
+    &:before {
+        content: "";
+        width: 0%;
+        position: absolute;
+        left: 0;
+        right:0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        height: 0%;
+        @include border-radius(100%);
+        @include transition(all, 0s);
+        background-color: rgba(0,0,0,0.4);
+        z-index: 9;
+    }
+    &:after {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        @include border-radius(100%);
+        @include transition(all, 0s);
+        background-color: rgba($main-color-lighter, 0);
+        z-index: 10;
+    }
+
+    &:hover {
+        background-color: darken($main-color-lighter, 5%);
+    }
+    &:active {
+        background-color: $main-color;
+    }
+    &:active:before {
+        width: 100%;
+        height: 100%;
+    }
+    &:active:after {
+        width: 0;
+        height: 0;
+        background-color: rgba($main-color-lighter, 1);
+        -webkit-transition: width 2s linear, height 2s linear, background-color 0s linear;
+        -moz-transition: width 2s linear, height 2s linear, background-color 0s linear;
+        -ms-transition: width 2s linear, height 2s linear, background-color 0s linear;
+        -o-transition: width 2s linear, height 2s linear, background-color 0s linear;
+        transition: width 2s linear, height 2s linear, background-color 0s linear;
+    }
+}

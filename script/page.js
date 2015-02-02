@@ -1,6 +1,6 @@
 // GLOBAL VARIABLES
 var mobile = false;
-var navTop = $(".nav__main").offset().top;
+var navTop = $("header").offset().top;
 
 /**
  * Handle responses to page scrolls
@@ -8,7 +8,7 @@ var navTop = $(".nav__main").offset().top;
 $(document).scroll(function() {
     var top = $(document).scrollTop();
 
-    $("#about").css("background-position", "50% " + window.pageYOffset * 0.7 + "px");
+    $(".heading").css("background-position", "50% " + (window.pageYOffset * 0.7 - 640) + "px");
 
     if (mobile) { // Mobile scroll responses
     } else {
@@ -19,12 +19,11 @@ $(document).scroll(function() {
             $("#top").fadeOut();
         }
 
-        $("header, #header__logo").toggleClass("header--fixed", top >= 40);
-        $(".nav__main").toggleClass("nav--fixed", top >= navTop);
+        $("header").toggleClass("header--fixed", top >= navTop);
         if (top >= navTop) {
-            $("#nav__filler").show();
+            $(".nav__filler").show();
         } else{
-            $("#nav__filler").hide();
+            $(".nav__filler").hide();
         }
 
     }
@@ -33,11 +32,5 @@ $(document).scroll(function() {
 $("#top").click(function() {
     $("html, body").animate({
         scrollTop: 0
-    }, "fast");
-});
-
-$(".button__contact").click(function() {
-    $("html, body").animate({
-        scrollTop: $("#contact").offset().top
     }, "fast");
 });
