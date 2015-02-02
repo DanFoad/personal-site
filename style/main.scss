@@ -1,0 +1,260 @@
+@import 'reset';
+@import 'colours';
+@import 'fonts';
+@import 'mixins';
+@import 'media';
+
+/**** GENERAL ****/
+body {
+    font: $body-font;
+    color: $font-dark;
+    text-rendering: optimizelegibility;
+}
+
+#top {
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.2em;
+    display: none;
+    background-color: $main-color;
+    color: #FFFFFF;
+    @include transition(background-color, 0.1s);
+    @include border-radius(2px);
+    position: fixed;
+    right: 56px;
+    bottom: 48px;
+    cursor: pointer;
+    z-index: 50;
+
+    &:hover {
+        background-color: $background-dark;
+    }
+}
+
+/**** HEADER ****/
+header {
+    width: auto;
+    display: inline-block;
+    height: 64px;
+    line-height: 64px;
+    padding-left: 16px;
+    padding-right: 92px;
+    background: linear-gradient(315deg, transparent 20px, $border-dark 0px) repeat scroll right bottom transparent;
+    position: absolute;
+    left: 0;
+    top: 40px;
+    z-index: 7;
+
+    h1 {
+        font: $header-font;
+        color: $font-dark;
+        display: inline-block;
+        width: auto;
+        text-transform: lowercase;
+        margin-right: 8px;
+        cursor: pointer;
+    }
+
+    h3 {
+        color: $font-darker;
+        display: inline-block;
+        width: auto;
+        text-transform: lowercase;
+    }
+}
+.header--fixed {
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+#header__logo {
+    display: block;
+    width: 128px;
+    height: 128px;
+    position: absolute;
+    top: 8px;
+    z-index: 6;
+    left: 64px;
+
+    &.header--fixed {
+        position: fixed;
+        left: 64px;
+        top: -32px;
+    }
+}
+
+/**** NAVIGATION ****/
+.nav__main {
+    width: 100%;
+    height: 64px;
+    line-height: 64px;
+    border-bottom: 1px solid $border-dark;
+    position: relative;
+    z-index: 5;
+    background: #FFFFFF;
+
+    &.nav--fixed {
+        position: fixed;
+        left: 0;
+        top: 0;
+    }
+
+    .nav__container {
+        display: block;
+    }
+}
+
+.nav__container {
+    height: 64px;
+    width: 1024px;
+    display: inline-block;
+    margin: 0 auto;
+    text-align: right;
+
+    ul {
+        list-style: none;
+        height: 64px;
+    }
+
+    li {
+        display: inline-block;
+        width: auto;
+        padding-left: 24px;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 12px;
+        cursor: pointer;
+        @include transition(color);
+        
+        &:first-child {
+            padding-left: 0;
+        }
+
+        &:left-child {
+            padding-right: 24px;
+        }
+
+        &:hover {
+            color: $main-color;
+        }
+    }
+}
+
+#nav__filler {
+    display: none;
+    width: 100%;
+    height: 64px;
+    position: relative;
+    background-color: #FFFFFF;
+}
+
+/**** MAIN ****/
+main {
+    background-color: $background-light;
+    padding: 64px 0;
+
+    &>div {
+        width: 1024px;
+        margin: 0 auto;
+        padding: 16px 0;
+        border-top: 1px solid $border-dark;
+    }
+
+    h2 {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 32px;
+        cursor: pointer;
+    }
+    h2:before {
+        content: "# ";
+        color: $main-color-lighter;
+    }
+}
+
+#about {
+    width: 100%;
+    height: auto;
+    background: url('about.png') 50% 0% no-repeat $main-color;
+    text-align: center;
+    border-bottom: 8px solid rgba($main-color-darker, 0.3);
+
+    .large {
+        font-size: 2.4em;
+        color: #FFFFFF;
+        @include text-shadow(2px, 2px, 0, rgba(0,0,0,0.4));
+        margin: 32px 0;
+    }
+
+    div {
+        width: 1024px;
+        margin: 0 auto;
+        padding: 128px 8px 64px;
+    }
+}
+
+.description {
+    color: $font-darkest;
+    padding: 8px;
+    background: url('lines.png') repeat rgba($main-color-lighter, 0.7);
+    @include text-shadow(1px, 1px, 1px, $main-color-lighter);
+    font-size: 1.2em;
+}
+
+.button__contact {
+    margin: 32px auto;
+    @include border-radius(0);
+    @include text-shadow(0.5px, 0.5px, 0, $main-color-lighter);
+    @include box-shadow(0, 4px, 0, rgba($main-color-darker, 0.7));
+    @include transition(background-color, 0.25s);
+    background-color: $main-color-darker;
+    cursor: pointer;
+    color: $font-light;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 0;
+    padding: 16px 32px;
+
+    &:hover, &:focus {
+        background-color: lighten($main-color-darker, 10%);
+        outline: 0;
+        -moz-outline-style: none;
+    }
+
+    &::moz-focus-inner {
+        border: 0;
+    }
+}
+
+/**** FOOTER ****/
+footer {
+    height: 64px;
+    line-height: 63px;
+    background-color: $background-dark;
+    color: $font-lighter;
+    padding-left: 32px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    position: relative;
+
+    img {
+        height: 32px;
+        width: 32px;
+        vertical-align: middle;
+        margin-right: 16px;
+    }
+
+    .nav__container {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+}
