@@ -1,0 +1,57 @@
+@import 'colours';
+@import 'fonts';
+@import 'mixins';
+
+#lipsum__container {
+    display: flex;
+
+    ul {
+        display: inline-block;
+        border-left: 1px solid $border-dark;
+        width: 360px;
+        flex-shrink: 0;
+    }
+
+    li {
+        display: block;
+        border-bottom: 1px solid $border-dark;
+        background-color: $background-lighter;
+        position: relative;
+        padding-left: 8px;
+        height: 32px;
+        line-height: 32px;
+        cursor: pointer;
+        @include transition(background-color, 0.2s);
+
+        &:first-child {
+            border-top: 1px solid $border-dark;
+        }
+
+        &:hover {
+            background-color: #FFFFFF;
+        }
+
+        &.selected {
+            background-color: #FFFFFF;
+        }
+
+        .book__author {
+            color: $main-color-lighter;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            position: absolute;
+            right: 8px;
+            top: 0;
+            bottom: 0;
+        }
+    }
+
+    textarea {
+        display: inline-block;
+        width: 100%;
+        align-self: stretch;
+        @include border-radius(0);
+        border: 1px solid $border-dark;
+    }
+}

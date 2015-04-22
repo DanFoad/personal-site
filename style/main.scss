@@ -8,7 +8,7 @@
 body {
     font: $body-font;
     color: $font-dark;
-    text-rendering: optimizelegibility;
+    text-rendering: optimizeLegibility;
 }
 
 ::selection {
@@ -142,8 +142,7 @@ header {
         &:first-child {
             padding-left: 0;
         }
-
-        &:left-child {
+        &:last-child {
             padding-right: 24px;
         }
 
@@ -212,6 +211,7 @@ main {
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: stretch;
+    margin: 0 auto;
 }
 .preview {
     width: 236px;
@@ -220,6 +220,23 @@ main {
     display: inline-block;
     cursor: pointer;
     margin-bottom: 16px;
+    padding: 8px 0;
+    @include transition(all);
+
+    &:hover {
+        background-color: #FFFFFF;
+        @include box-shadow(0, 0, 2px, $border-dark);
+        @include transition(all, 0.2s);
+    }
+
+    &:hover .preview__title {
+        color: darken($main-color-darker, 10%);
+    }
+
+    &:hover .preview__image {
+        filter: grayscale(0);
+        -webkit-filter: grayscale(0);
+    }
 }
 .preview__title {
     font-size: 0.9rem;
@@ -232,6 +249,7 @@ main {
     width: 208px;
     margin: 0 auto;
     margin-top: 4px;
+    @include transition(color, 0.2s);
 }
 .preview__image {
     opacity: 0.8;
@@ -244,6 +262,48 @@ main {
     text-align: left;
     padding: 4px 16px;
     font-size: 14px;
+}
+
+.skills__skill {
+    width: 320px;
+    display: inline-block;
+    padding: 4px 8px;
+    position: relative;
+
+    h3 {
+        font-size: 1.3em;
+        font-weight: bold;
+        height: 32px;
+        line-height: 32px;
+        padding-left: 16px;
+        position: relative;
+        border-bottom: 4px solid $main-color-lighter;
+        margin-bottom: 8px;
+    }
+
+    .skills__img {
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
+        background-color: $main-color-lighter;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        color: $font-light;
+        text-align: center;
+    }
+
+    li {
+        margin: 8px 16px;
+
+        &:before {
+            content: "\f101";
+            font-family: "FontAwesome";
+            color: $font-darker;
+            padding-right: 4px;
+        }
+    }
 }
 
 .description {
@@ -280,6 +340,81 @@ main {
     }
 }
 
+#contact__form {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.contact__input {
+    flex: 1 auto;
+    margin: 4px 8px;
+    height: 32px;
+    display: inline-block;
+    position: relative;
+    display: flex;
+    border: 1px solid #AAAAAA;
+    box-sizing: content-box;
+
+    & input {
+        flex: 1;
+        background-color: #FFFFFF;
+        border: 0;
+        padding-left: 8px;
+        @include border-radius(0px);
+    }
+}
+.contact__input--title {
+    height: 32px;
+    line-height: 32px;
+    padding: 0 8px;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: $main-color-lighter;
+}
+.contact__input--valid {
+    height: 100%;
+    line-height: 32px;
+    width: 32px;
+    text-align: center;
+    font-size: 0.9em;
+    display: none;
+
+    &.valid {
+        background-color: #81C784;
+    }
+
+    &.invalid {
+        background-color: #E57373;
+    }
+}
+#contact__message--container {
+    flex: 2 100%;
+    margin: 8px;
+    position: relative;
+
+    & .contact__input--title {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 32px;
+    }
+}
+#contact__message {
+    box-sizing: border-box;
+    width: 100%;
+    border: 0;
+    background-color: #FFFFFF;
+    border: 1px solid #AAAAAA;
+    padding-left: 76px;
+    max-width: 1024px;
+    min-height: 32px;
+    @include border-radius(0px);
+}
+#contact__response {
+    display: none;
+}
+
 /**** FOOTER ****/
 footer {
     height: 64px;
@@ -305,5 +440,44 @@ footer {
         right: 0;
         top: 0;
         bottom: 0;
+    }
+}
+
+/**** MEDIA QUERIES ****/
+
+@media all and (max-width: 1024px) {
+    main > div {
+        width: 100%;
+    }
+    .nav__container {
+        width: 100%;
+        text-align: center;
+
+        & li:last-child {
+            padding-right: 0;
+        }
+    }
+    #about > div {
+        width: 100%;
+        padding-top: 16px;
+    }
+    header, #header__logo {
+        display: none;
+    }
+    footer .nav__container {
+        display: none;
+    }
+    #top {
+        visibility: hidden;
+    }
+    .skills__skill {
+        width: 30%;
+        min-width: 240px;
+    }
+}
+
+@media all and (max-width: 480px) {
+    .skills__skill {
+        width: 100%;
     }
 }
