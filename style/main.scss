@@ -293,6 +293,19 @@ main {
     }
 }
 
+.contact__link {
+    text-decoration: underline;
+    color: $main-color;
+    margin-left: 24px;
+
+    .fa {
+        margin-right: 8px;
+        color: darken($main-color-darker, 10%);
+        font-size: 1.1em;
+        vertical-align: bottom;
+    }
+}
+
 #contact__form {
     display: flex;
     flex-flow: row wrap;
