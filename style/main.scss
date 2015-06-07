@@ -29,7 +29,7 @@ body {
     font-size: 1.2em;
     display: none;
     background-color: $main-color;
-    color: #FFFFFF;
+    color: $background-lightest;
     @include transition(background-color, 0.1s);
     @include border-radius(2px);
     position: fixed;
@@ -45,84 +45,47 @@ body {
 
 /**** HEADER ****/
 header {
-    width: auto;
-    display: inline-block;
-    height: 64px;
+    height: 65px;
+    width: 100%;
     line-height: 64px;
-    padding-left: 16px;
-    padding-right: 92px;
-    background: linear-gradient(315deg, transparent 20px, $border-dark 0px) repeat scroll right bottom transparent;
-    position: absolute;
+    padding-left: 96px;
+    position: fixed;
     left: 0;
-    top: 40px;
+    top: 0;
     z-index: 7;
+    background-color: $background-lightest;
+    border-bottom: 1px solid #B8B8B8;
+    @include box-shadow(1px, 0, 0, rgba(0,0,0,0.2));
 
     h1 {
         font: $header-font;
         color: $font-dark;
         display: inline-block;
-        width: auto;
+        width: 196px;
+        height: 64px;
         text-transform: lowercase;
-        margin-right: 8px;
         cursor: pointer;
     }
-
-    h3 {
-        color: $font-darker;
-        display: inline-block;
-        width: auto;
-        text-transform: lowercase;
-    }
-}
-.header--fixed {
-    position: fixed;
-    left: 0;
-    top: 0;
 }
 
 #header__logo {
-    display: block;
-    width: 128px;
-    height: 128px;
+    display: inline-block;
+    width: 64px;
+    height: 64px;
     position: absolute;
-    top: 8px;
+    left: 16px;
+    top: 0;
     z-index: 6;
-    left: 64px;
-
-    &.header--fixed {
-        position: fixed;
-        left: 64px;
-        top: -32px;
-    }
+    padding: 8px;
 }
 
 /**** NAVIGATION ****/
 .nav__main {
-    width: 100%;
-    height: 64px;
-    line-height: 64px;
-    border-bottom: 1px solid $border-dark;
-    position: relative;
-    z-index: 5;
-    background: #FFFFFF;
-
-    &.nav--fixed {
-        position: fixed;
-        left: 0;
-        top: 0;
-    }
-
-    .nav__container {
-        display: block;
-    }
-}
-
-.nav__container {
-    height: 64px;
-    width: 1024px;
+    width: auto;
     display: inline-block;
-    margin: 0 auto;
-    text-align: right;
+    position: relative;
+    height: 64px;
+    z-index: 5;
 
     ul {
         list-style: none;
@@ -132,32 +95,21 @@ header {
     li {
         display: inline-block;
         width: auto;
-        padding-left: 24px;
-        text-transform: uppercase;
-        font-weight: bold;
-        font-size: 12px;
+        height: 64px;
+        padding: 0 24px;
         cursor: pointer;
-        @include transition(color);
-        
-        &:first-child {
-            padding-left: 0;
-        }
-        &:last-child {
-            padding-right: 24px;
-        }
 
         &:hover {
-            color: $main-color;
+            color: $background-lightest;
+            background-color: lighten($main-color-lighter, 20%);
+        }
+
+        & a {
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 12px;
         }
     }
-}
-
-#nav__filler {
-    display: none;
-    width: 100%;
-    height: 64px;
-    position: relative;
-    background-color: #FFFFFF;
 }
 
 /**** MAIN ****/
@@ -187,13 +139,14 @@ main {
 #about {
     width: 100%;
     height: auto;
-    background: url('about.png') 50% 0% no-repeat $main-color;
+    background: url('triangles.png') 50% 0% no-repeat $main-color;
     text-align: center;
     border-bottom: 8px solid rgba($main-color-darker, 0.3);
+    margin-top: 64px;
 
     .large {
         font-size: 2.4em;
-        color: #FFFFFF;
+        color: $background-lightest;
         @include text-shadow(2px, 2px, 0, rgba(0,0,0,0.4));
         margin: 32px 0;
     }
@@ -224,7 +177,7 @@ main {
     @include transition(all);
 
     &:hover {
-        background-color: #FFFFFF;
+        background-color: $background-lightest;
         @include box-shadow(0, 0, 2px, $border-dark);
         @include transition(all, 0.2s);
     }
@@ -357,7 +310,7 @@ main {
 
     & input {
         flex: 1;
-        background-color: #FFFFFF;
+        background-color: $background-lightest;
         border: 0;
         padding-left: 8px;
         @include border-radius(0px);
@@ -404,7 +357,7 @@ main {
     box-sizing: border-box;
     width: 100%;
     border: 0;
-    background-color: #FFFFFF;
+    background-color: $background-lightest;
     border: 1px solid #AAAAAA;
     padding-left: 76px;
     max-width: 1024px;
@@ -434,12 +387,13 @@ footer {
         margin-right: 16px;
     }
 
-    .nav__container {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
+    .nav__main {
+        
+        margin-left: 32px;
+
+        li:hover {
+            background-color: $main-color-darker;
+        }
     }
 }
 

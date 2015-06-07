@@ -2,13 +2,23 @@
 var mobile = false;
 var navTop = $(".nav__main").offset().top;
 
+animateBackground();
+setInterval(function() {
+    animateBackground();
+}, 5000);
+
+function animateBackground() {
+    $("#about").animate({
+        "background-position-x" : ((Math.random() * 20) - 10) + 50 + "%",
+        "background-position-y" : (Math.random() * 20) + "%"
+    }, 5000);
+}
+
 /**
  * Handle responses to page scrolls
  */
 $(document).scroll(function() {
     var top = $(document).scrollTop();
-
-    $("#about").css("background-position", "50% " + window.pageYOffset * 0.7 + "px");
 
     if (mobile) { // Mobile scroll responses
     } else {
