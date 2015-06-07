@@ -159,7 +159,7 @@ main {
 #about {
   width: 100%;
   height: auto;
-  background: url("triangles.png") 50% 0% no-repeat #607D8B;
+  background: url("triangles.png") 50% 0% no-repeat #D0DAE1;
   text-align: center;
   border-bottom: 8px solid rgba(69, 90, 100, 0.3);
   margin-top: 64px; }
