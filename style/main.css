@@ -41,8 +41,7 @@ a, a:hover, a:focus, a:visited, a:active {
 /**** GENERAL ****/
 body {
   font: 100% "Source Sans Pro", sans-serif;
-  color: #404040;
-  text-rendering: optimizeLegibility; }
+  color: #404040; }
 
 ::selection {
   background: #303f46;
