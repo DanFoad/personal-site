@@ -296,6 +296,7 @@ main {
     text-decoration: underline;
     color: $main-color;
     margin-left: 24px;
+    display: block;
 
     .fa {
         margin-right: 8px;
@@ -400,7 +401,7 @@ footer {
     }
 
     .nav__main {
-        
+
         margin-left: 32px;
 
         li:hover {
