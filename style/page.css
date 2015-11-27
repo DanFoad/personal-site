@@ -1,434 +1,76 @@
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  box-sizing: border-box;
-  vertical-align: baseline; }
-
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-  display: block; }
-
-body {
-  line-height: 1; }
-
-ol, ul {
-  list-style: none; }
-
-blockquote, q {
-  quotes: none; }
-
-blockquote:before, blockquote:after {
-  content: '';
-  content: none; }
-
-q:before, q:after {
-  content: '';
-  content: none; }
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0; }
-
-a, a:hover, a:focus, a:visited, a:active {
-  color: inherit;
-  text-decoration: none; }
-
-@media (max-width: 1024px) {
-  main > div, #about div, nav__container {
-    width: 100%; } }
-pre .line-number {
-  float: left;
-  text-align: right;
-  background-color: #DDDDDD;
-  color: #444444;
-  font: normal 10px/20px Monoco, monospace; }
-
-pre .line-number span {
-  display: block;
-  padding: 0 0.5em 0 1.5em; }
-
-pre .line-number {
-  padding: 1px 0; }
-
-pre .cl {
-  display: block;
-  clear: both; }
-
 /*
+Error: Undefined variable: "$header-font".
+        on line 97 of C:\Users\Dan Foad\sites\danfoad.github.io\style\page.scss
 
-github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+92:     position: relative;
+93:     border-bottom: 1px solid $border-dark;
+94:     background-color: #FFFFFF;
+95: 
+96:     h1 {
+97:         font: $header-font;
+98:         color: $font-dark;
+99:         display: inline-block;
+100:         width: auto;
+101:         text-transform: lowercase;
+102:         margin-right: 8px;
 
+Backtrace:
+C:\Users\Dan Foad\sites\danfoad.github.io\style\page.scss:97
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/script/tree/variable.rb:49:in `_perform'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/script/tree/node.rb:50:in `perform'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:384:in `visit_prop'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `block in with_base'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `with_base'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `block (2 levels) in visit_rule'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `map'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `block in visit_rule'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:418:in `visit_rule'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `block in with_base'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `with_base'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `block (2 levels) in visit_rule'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `map'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:420:in `block in visit_rule'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:418:in `visit_rule'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `block in with_base'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/stack.rb:79:in `with_base'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `map'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:157:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:8:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/root_node.rb:36:in `css_tree'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:368:in `_render_with_sourcemap'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/engine.rb:285:in `render_with_sourcemap'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:396:in `run'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:62:in `process_result'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/exec/base.rb:52:in `parse'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/lib/sass/exec/base.rb:19:in `parse!'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.4.9/bin/sass:13:in `<top (required)>'
+C:/Program Files (x86)/Koala/bin/sass:18:in `load'
+C:/Program Files (x86)/Koala/bin/sass:18:in `<main>'
 */
-.hljs {
-  display: block;
-  overflow-x: auto;
-  padding: 0 1em;
-  color: #333;
-  background: #f8f8f8;
-  -webkit-text-size-adjust: none;
-  font: normal 10px/20px Monoco, monospace;
-  border: 1px solid #E0E0E0; }
-
-.hljs-comment,
-.diff .hljs-header,
-.hljs-javadoc {
-  color: #998;
-  font-style: italic; }
-
-.hljs-keyword,
-.css .rule .hljs-keyword,
-.hljs-winutils,
-.nginx .hljs-title,
-.hljs-subst,
-.hljs-request,
-.hljs-status {
-  color: #333;
-  font-weight: bold; }
-
-.hljs-number,
-.hljs-hexcolor,
-.ruby .hljs-constant {
-  color: #008080; }
-
-.hljs-string,
-.hljs-tag .hljs-value,
-.hljs-phpdoc,
-.hljs-dartdoc,
-.tex .hljs-formula {
-  color: #d14; }
-
-.hljs-title,
-.hljs-id,
-.scss .hljs-preprocessor {
-  color: #900;
-  font-weight: bold; }
-
-.hljs-list .hljs-keyword,
-.hljs-subst {
-  font-weight: normal; }
-
-.hljs-class .hljs-title,
-.hljs-type,
-.vhdl .hljs-literal,
-.tex .hljs-command {
-  color: #458;
-  font-weight: bold; }
-
-.hljs-tag,
-.hljs-tag .hljs-title,
-.hljs-rules .hljs-property,
-.django .hljs-tag .hljs-keyword {
-  color: #000080;
-  font-weight: normal; }
-
-.hljs-attribute,
-.hljs-variable,
-.lisp .hljs-body {
-  color: #008080; }
-
-.hljs-regexp {
-  color: #009926; }
-
-.hljs-symbol,
-.ruby .hljs-symbol .hljs-string,
-.lisp .hljs-keyword,
-.clojure .hljs-keyword,
-.scheme .hljs-keyword,
-.tex .hljs-special,
-.hljs-prompt {
-  color: #990073; }
-
-.hljs-built_in {
-  color: #0086b3; }
-
-.hljs-preprocessor,
-.hljs-pragma,
-.hljs-pi,
-.hljs-doctype,
-.hljs-shebang,
-.hljs-cdata {
-  color: #999;
-  font-weight: bold; }
-
-.hljs-deletion {
-  background: #fdd; }
-
-.hljs-addition {
-  background: #dfd; }
-
-.diff .hljs-change {
-  background: #0086b3; }
-
-.hljs-chunk {
-  color: #aaa; }
-
-/**** GENERAL ****/
-body {
-  font: 100% "Source Sans Pro", sans-serif;
-  color: #404040;
-  text-rendering: optimizeLegibility; }
-
-::selection {
-  background: #303f46;
-  color: #E0E0E0; }
-
-::moz-selection {
-  background: #303f46;
-  color: #E0E0E0; }
-
-code {
+body:before {
+  white-space: pre;
   font-family: monospace;
-  color: #888888; }
-
-#top {
-  width: 32px;
-  height: 32px;
-  line-height: 32px;
-  font-weight: bold;
-  text-align: center;
-  font-size: 1.2em;
-  display: none;
-  background-color: #607D8B;
-  color: #FFFFFF;
-  -webkit-transition: background-color 0.1s ease-out;
-  -moz-transition: background-color 0.1s ease-out;
-  -ms-transition: background-color 0.1s ease-out;
-  -o-transition: background-color 0.1s ease-out;
-  transition: background-color 0.1s ease-out;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -ms-border-radius: 2px;
-  border-radius: 2px;
-  position: fixed;
-  right: 56px;
-  bottom: 48px;
-  cursor: pointer;
-  z-index: 50; }
-  #top:hover {
-    background-color: #444444; }
-
-main a {
-  color: #607D8B; }
-  main a:hover {
-    color: #455A64;
-    text-decoration: underline; }
-  main a:visited {
-    color: #607D8B; }
-
-/**** HEADER ****/
-.heading {
-  width: 100%;
-  height: 96px;
-  line-height: 96px;
-  font-size: 1.8em;
-  background: url("about.png") 50% -640px no-repeat #607D8B;
-  color: #FFFFFF;
-  -webkit-text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.4);
-  -moz-text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.4);
-  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.4);
-  padding-left: 64px;
-  border-bottom: 8px solid rgba(69, 90, 100, 0.3);
-  position: relative;
-  z-index: 10; }
-  .heading .fa-angle-right {
-    color: #adbcc4;
-    font-size: 0.8em;
-    display: inline-block;
-    height: 96px;
-    line-height: 90px;
-    vertical-align: middle;
-    margin: 0 8px; }
-
-header {
-  width: 100%;
-  height: 64px;
-  line-height: 64px;
-  z-index: 7;
-  position: relative;
-  border-bottom: 1px solid #E5E5E5;
-  background-color: #FFFFFF; }
-  header h1 {
-    font: 1.4em "Play", sans-serif;
-    color: #404040;
-    display: inline-block;
-    width: auto;
-    text-transform: lowercase;
-    margin-right: 8px;
-    cursor: pointer; }
-  header h3 {
-    color: #888888;
-    display: inline-block;
-    width: auto;
-    text-transform: lowercase; }
-  header .header__left {
-    padding-left: 16px;
-    padding-right: 92px;
-    background: linear-gradient(315deg, transparent 20px, #E5E5E5 0px) repeat scroll right bottom transparent;
-    position: absolute;
-    height: 64px;
-    width: auto;
-    left: 0;
-    top: 0;
-    z-index: 9; }
-
-.header--fixed {
-  position: fixed;
-  left: 0;
-  top: 0; }
-
-#header__logo {
-  display: block;
-  width: 128px;
-  height: 128px;
-  position: absolute;
-  top: -26px;
-  z-index: 5;
-  left: 64px; }
-
-/**** NAVIGATION ****/
-.nav__main {
-  width: 1024px;
-  height: 64px;
-  line-height: 64px;
-  position: absolute;
-  z-index: 5;
-  background: #FFFFFF;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: 0 auto;
-  border-bottom: 1px solid #E5E5E5; }
-  .nav__main .nav__container {
-    display: block; }
-
-.nav__container {
-  height: 64px;
-  width: 1024px;
-  display: inline-block;
-  margin: 0 auto;
-  text-align: right; }
-  .nav__container ul {
-    list-style: none;
-    height: 64px; }
-  .nav__container li {
-    display: inline-block;
-    width: auto;
-    padding-left: 24px;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 12px;
-    cursor: pointer;
-    -webkit-transition: color 0.3s ease-out;
-    -moz-transition: color 0.3s ease-out;
-    -ms-transition: color 0.3s ease-out;
-    -o-transition: color 0.3s ease-out;
-    transition: color 0.3s ease-out; }
-    .nav__container li:first-child {
-      padding-left: 0; }
-    .nav__container li:hover {
-      color: #607D8B; }
-
-.nav__filler {
-  display: none;
-  width: 100%;
-  height: 64px;
-  position: relative;
-  background-color: #FFFFFF; }
-
-/**** MAIN ****/
-main {
-  background-color: #F5F5F5;
-  padding: 64px 0; }
-  main > div {
-    width: 1024px;
-    margin: 0 auto;
-    padding: 16px 16px;
-    border-top: 1px solid #E5E5E5; }
-  main .title {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-left: -16px;
-    margin-bottom: 32px;
-    cursor: pointer; }
-    main .title:before {
-      content: "# ";
-      color: #90A4AE; }
-    main .title a {
-      color: #404040; }
-  main h3 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin: 16px 0; }
-
-.description {
-  color: #222222;
-  padding: 8px;
-  background: url("lines.png") repeat rgba(144, 164, 174, 0.7);
-  -webkit-text-shadow: 1px 1px 1px #90A4AE;
-  -moz-text-shadow: 1px 1px 1px #90A4AE;
-  text-shadow: 1px 1px 1px #90A4AE;
-  font-size: 0.9em; }
-  .description a {
-    color: #455A64; }
-    .description a:hover {
-      text-decoration: underline; }
-
-/**** FOOTER ****/
-footer {
-  height: 64px;
-  line-height: 63px;
-  background-color: #444444;
-  color: #888888;
-  padding-left: 32px;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 14px;
-  position: relative; }
-  footer img {
-    height: 32px;
-    width: 32px;
-    vertical-align: middle;
-    margin-right: 16px; }
-  footer .nav__container {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0; }
-
-/**** MEDIA QUERIES ****/
-@media all and (max-width: 1024px) {
-  .heading {
-    height: auto; }
-
-  .heading a {
-    display: inline-block;
-    width: 100%; }
-
-  main > div {
-    width: 100%; }
-
-  .nav__main {
-    width: 100%; }
-
-  .nav__container {
-    width: 100%;
-    text-align: center; }
-    .nav__container li:last-child {
-      padding-right: 0; }
-
-  .header__left, #header__logo {
-    display: none; }
-
-  footer .nav__container {
-    display: none; }
-
-  #top {
-    visibility: hidden; } }
-
-/*# sourceMappingURL=page.css.map */
+  content: "Error: Undefined variable: \"$header-font\".\A         on line 97 of C:\Users\Dan Foad\sites\danfoad.github.io\style\page.scss\A \A 92:     position: relative;\A 93:     border-bottom: 1px solid $border-dark;\A 94:     background-color: #FFFFFF;\A 95: \A 96:     h1 {\A 97:         font: $header-font;\A 98:         color: $font-dark;\A 99:         display: inline-block;\A 100:         width: auto;\A 101:         text-transform: lowercase;\A 102:         margin-right: 8px;"; }

@@ -9,7 +9,7 @@
     <meta name="description" content="Personal site for Dan Foad, a front-end web developer living in the UK">
 
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Play">
     <link rel="stylesheet" href="style/main.css?v=2">
 
@@ -22,33 +22,37 @@
     <![endif]-->
 </head>
 <body>
-    <header>
-        <img id="header__logo" src="style/logo.png" alt="">
-        <h1><a href="/">[Dan Foad]</a></h1>
+    <header class="header">
+        <h1 class="header__title"><a href="/"><img id="header__logo" src="style/logo.png" alt="">Dan Foad</a></h1>
 
-        <nav class="nav__main">
+        <nav class="header__topnav">
             <ul>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">My Skills</a></li>
-                <li><a href="#contact">Contact Me</a></li>
+                <li class="header__link"><a href="#about">About Me</a></li><!--
+             --><li class="header__link"><a href="#projects">Projects</a></li><!--
+             --><li class="header__link"><a href="#skills">My Skills</a></li><!--
+             --><li class="header__link"><a href="#contact">Contact Me</a></li>
             </ul>
         </nav>
 
     </header>
 
-    <div id="about">
-        <div>
-            <p class="large">Hi, my name's Dan Foad and I build websites</p>
-            <p class="description">I'm a freelance/hobbyist web developer living in Birmingham. I specialise mainly in front-end development work but I don't mind poking about in PHP and MySQL if needed though. This is my personal site and portfolio.</p>
-            <button class="button__contact">Contact Me</button>
-        </div>
-    </div>
-
     <main role="main">
 
-        <div id="projects">
-            <h2 class="title"><a href="#projects">Projects</a></h2>
+        <div id="about" class="user__header">
+            <div class="user__profile">
+				<h1>Dan Foad</h1>
+				<span class="avatar"><img src="img/avatar.png" alt="" /></span>
+				<h3><a href="#contact"><i class="fa fa-envelope"></i>Contact Me</a></h3>
+			</div>
+			<div class="user__info">
+				<h3><i class="fa fa-map-marker"></i>Birmingham, United Kingdom</h3>
+				<h3>Timezone: UTC/GMT +0<i class="fa fa-clock-o"></i></h3>
+			</div>
+
+        </div>
+
+        <div id="projects" class="container">
+            <h2>Projects</h2>
             <div class="preview__container">
                 <a href="/hold-buttons/"><div class="preview">
                     <img class="preview__image" src="img/hold-button-preview.png" alt="">
@@ -74,8 +78,8 @@
             <p>The source code for all of these projects and any that have not been posted here is available at my GitHub account. <a href="https://github.com/DanFoad">https://github.com/DanFoad</a>.
         </div>
 
-        <div id="skills">
-            <h2 class="title"><a href="#skills">My Skills</a></h2>
+        <div id="skills" class="container">
+            <h2>My Skills</h2>
             <div class="skills__skill">
                 <h3>HTML <span class="skills__img"><i class="fa fa-html5"></i></span></h3>
                 <ul>
@@ -102,52 +106,17 @@
             </div>
         </div>
 
-        <div id="contact">
-            <h2 class="title"><a href="#contact">Contact Me</a></h2>
+        <div id="contact" class="container">
+            <h2>Contact Me</h2>
 
             <a class="contact__link" href="mailto:contact@danfoad.co.uk"><i class="fa fa-envelope-o"></i>contact@danfoad.co.uk</a>
             <a class="contact__link" href="https://twitter.com/FoadDan"><i class="fa fa-twitter"></i>@FoadDan</a>
             <a class="contact__link" href="https://www.linkedin.com/profile/view?id=AAIAAA88bKQBOywJrZ-PHdUuQPFcBOToyK1CdGs"><i class="fa fa-linkedin-square"></i>Dan Foad</a>
-
-            <!-- Contact Form not working
-            <form id="contact__form" action="contact.php" method="post">
-                <div class="contact__input">
-                    <span class="contact__input--title">Name</span>
-                    <input id="contact__name" name="name" type="text" placeholder="What's your name?" required>
-                    <span class="contact__input--valid" id="contact__name--valid"><i class="fa fa-check"></i></span>
-                </div>
-                <div class="contact__input">
-                    <span class="contact__input--title">Email</span>
-                    <input id="contact__email" name="email" type="email" placeholder="How can I get back to you?" required>
-                    <span class="contact__input--valid" id="contact__email--valid"><i class="fa fa-check"></i></span>
-                </div>
-                <div id="contact__message--container">
-                    <span class="contact__input--title">Message</span>
-                    <textarea name="message" id="contact__message" cols="30" rows="5" placeholder="What did you want to say?" required></textarea>
-                </div>
-
-                <button class="button__contact" name="contact">Send Me Your Message</button>
-            </form>
-            <p class="description" id="contact__response"></p>
-            -->
         </div>
 
     </main>
 
     <i id="top" class="fa fa-angle-up" title="Back to top"></i>
-
-    <footer>
-        <img src="style/logo.png" alt="" />
-        &copy; 2015 - Dan Foad
-        <nav class="nav__main">
-            <ul>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">My Skills</a></li>
-                <li><a href="#contact">Contact Me</a></li>
-            </ul>
-        </nav>
-    </footer>
 
     <script src="script/main.js"></script>
 
