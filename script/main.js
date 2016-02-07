@@ -108,6 +108,14 @@ $(".smooth-scroll").on("click", function() {
     }, 400);
 });
 
+$(".contact__input input, #contact__message").blur(function() {
+    if ($(this).val().length > 0 && !$(this).next().hasClass("contact__input--title-entered")) {
+        $(this).next().addClass("contact__input--title-entered");
+    } else {
+        $(this).next().removeClass("contact__input--title-entered");
+    }
+});
+
 /**** CONTACT BUTTON ANIMATION ****/
 /**
  * Developed by http://lmgonzalves.github.io/
