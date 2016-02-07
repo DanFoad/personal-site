@@ -71,7 +71,6 @@ function generateHexagon(a, left, top) {
     svg.setAttribute("xmlns:xlink","http://www.w3.org/1999/xlink");
     svg.setAttribute("height", d2 + 40);
     svg.setAttribute("width", d + 40);
-    svg.setAttribute("id", "test");
 
     var poly = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
     poly.setAttribute("points", points);
@@ -79,8 +78,8 @@ function generateHexagon(a, left, top) {
     poly.style.stroke = changeLightness("#4F6B7D", Math.floor(Math.random() * 40) - 20);
 
     svg.appendChild(poly);
-    svg.style.left = left;
-    svg.style.top = top;
+    svg.style.left = left + "px";
+    svg.style.top = top + "px";
 
     document.getElementById("main-header").appendChild(svg);
 }
@@ -102,18 +101,55 @@ function addHexagons(data) {
 
 $(".smooth-scroll").on("click", function() {
     var target = $(this).data("to");
-    var top = $("#" + target).offset().top;
+    var top = $("#" + target).offset().top - 32;
     $("html, body").animate({
         scrollTop: top
     }, 400);
 });
 
 $(".contact__input input, #contact__message").blur(function() {
-    if ($(this).val().length > 0 && !$(this).next().hasClass("contact__input--title-entered")) {
+    if ($(this).val().length > 0) {
         $(this).next().addClass("contact__input--title-entered");
     } else {
         $(this).next().removeClass("contact__input--title-entered");
     }
+});
+
+// Contact Form validation
+$("#contact__name").on("keydown cut paste input", function() {
+    if ($("#contact__name").val().length > 0) {
+        $("#contact__name--valid").show().html("<i class='fa fa-check'></i>").addClass("valid");
+        if ($("#contact__name--valid").hasClass("invalid")) $("#contact__name--valid").removeClass("invalid");
+    } else {
+        if ($("#contact__name--valid").hasClass("valid")) $("#contact__name--valid").html("<i class='fa fa-times'></i>").removeClass("valid").addClass("invalid");
+    }
+});
+
+$("#contact__email").on("keydown cut paste input", function() {
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (re.test($("#contact__email").val())) {
+        $("#contact__email--valid").show().html("<i class='fa fa-check'></i>").addClass("valid");
+        if ($("#contact__email--valid").hasClass("invalid")) $("#contact__email--valid").removeClass("invalid");
+    } else {
+        $("#contact__email--valid").show().html("<i class='fa fa-times'></i>").removeClass("valid").addClass("invalid");
+    }
+});
+
+$("#contact__form").on("submit", function(e) {
+    e.preventDefault();
+    $.ajax({
+        url: $(this).attr("action"),
+        type: 'POST',
+        data: $(this).serialize(),
+        success: function(data) {
+            $("#contact__response").html(data);
+            if (data.substring(0, 5) == "Error") {
+                loading.triggerFail();
+            } else {
+                loading.triggerSuccess();
+            }
+        },
+    });
 });
 
 /**** CONTACT BUTTON ANIMATION ****/
@@ -167,6 +203,7 @@ LoadingButton.prototype = {
     initEvents: function(){
         var self = this;
         self.el.addEventListener('click', function(){
+            $("#contact__form").submit();
             self.el.disabled = 'disabled';
             classie.add(self.el, 'open-loading');
             self.span.innerHTML = 'Sending';
@@ -224,7 +261,7 @@ LoadingButton.prototype = {
         self.successSegment.draw('100% - 50', '100%', 0.4, {callback: function(){
             self.span.innerHTML = 'Succeed';
             classie.add(self.el, 'succeed');
-            setTimeout(function(){ self.reset(); }, 2000);
+            //setTimeout(function(){ self.reset(); }, 2000);
         }});
     },
 
