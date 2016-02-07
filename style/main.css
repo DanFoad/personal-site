@@ -24,12 +24,13 @@ button {
 }
 
 /**** HEADER ****/
-header {
+#main-header {
     height: 100vh;
     width: 100%;
     background-color: #1E282E;
     color: #F1F1F1;
     position: relative;
+    overflow: hidden;
 }
 .header__hero {
     height: 100%;
@@ -39,6 +40,8 @@ header {
     flex-flow: column nowrap;
     align-items: center;
     justify-content: center;
+    position: relative;
+    z-index: 50;
 }
 .hero__title {
     font-size: 8rem;
@@ -112,6 +115,7 @@ header {
     flex-flow: row wrap;
     align-items: center;
     justify-content: space-between;
+    z-index: 100;
 }
 .nav__title {
     height: 6rem;
@@ -158,4 +162,46 @@ header {
 .nav__button:hover {
     background-color: #8EA7B7;
     color: #1E282E;
+}
+.hero__scroll {
+    height: 4.5rem;
+    line-height: 4.2rem;
+    width: 4.5rem;
+    text-align: center;
+    border-radius: 50%;
+    border: 2px solid #FFFFFF;
+    margin-top: 64px;
+    font-size: 2rem;
+    padding-left: 2px;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+}
+.hero__scroll:hover {
+    line-height: 4.8rem;
+}
+.hex {
+    stroke-width: 4px;
+    stroke-linejoin: miter;
+    fill: transparent;
+}
+#main-header svg {
+    position: absolute;
+    z-index: 0;
+}
+@media all and (max-width: 480px) {
+    #main-header {
+        height: auto;
+    }
+    .header__nav {
+        display: none;
+    }
+    .header__hero {
+        justify-content: flex-start;
+        margin-bottom: 360px;
+    }
+}
+
+/**** MAIN ****/
+main {
+    font-size: 1.6rem;
 }
