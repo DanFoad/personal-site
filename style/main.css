@@ -14,7 +14,7 @@ html, body {
     font-size: 62.5%;
 }
 .container {
-    max-width: 100rem;
+    max-width: 120rem;
     margin: 0 auto;
     width: 100%;
     position: relative;
@@ -122,7 +122,7 @@ button {
     color: #AAAAAA;
     text-transform: uppercase;
     font-weight: 100;
-    border-bottom: 4px solid #AAAAAA;
+    border-bottom: 2px solid #AAAAAA;
     letter-spacing: 0.5px;
 }
 .nav__links {
@@ -203,5 +203,125 @@ button {
 
 /**** MAIN ****/
 main {
+    border-top: 8px solid #3B505D;
     font-size: 1.6rem;
+    color: #444444;
+}
+
+.main__title {
+    margin: 64px 0 32px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #E0E0E0;
+}
+
+.projects {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: stretch;
+    justify-content: space-between;
+}
+.project {
+    display: inline-block;
+    width: 258px;
+    background-color: #F9F9F9;
+    margin: 32px 0;
+    padding-bottom: 48px;
+    position: relative;
+    border: 1px solid #63859B;
+}
+.project__title {
+    font-size: 1.5rem;
+    padding: 16px;
+}
+.project__description {
+    padding: 0 8px 16px;
+    font-size: 1.3rem;
+}
+.project__links {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 48px;
+}
+.project__links a {
+    display: inline-block;
+    width: 50%;
+    height: 48px;
+    line-height: 48px;
+    border-top: 1px solid #63859B;
+    text-align: center;
+    color: inherit;
+    text-decoration: none;
+    color: #63859B;
+    font-size: 2rem;
+    transition: all 0.2s;
+}
+.project__links a:first-child {
+    border-right: 1px solid #63859B;
+}
+.project__links a:hover {
+    background-color: #63859B;
+    color: #FFFFFF;
+}
+@media all and (max-width: 480px) {
+    .projects {
+        justify-content: space-around;
+    }
+}
+
+/**** CONTACT ****/
+.button__contact {
+    position: relative;
+    display: inline-block;
+    min-width: 160px;
+    border: 0;
+    background-color: #63859B;
+    color: #FFFFFF;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 0 20px;
+    border-radius: 2px;
+    transition: all 0.3s;
+    height: 48px;
+}
+
+.button__contact svg {
+    visibility: hidden;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: 0s;
+}
+.button__contact svg path {
+     stroke-linecap: round;
+     stroke-linejoin: round;
+     stroke-width: 4;
+     fill: none;
+}
+.button__contact svg path .success-path, .button__contact svg path .error-path, .button__contact svg path .error-path2 {
+    visibility: hidden;
+}
+
+.button__contact.open-loading {
+    padding-left: 60px;
+}
+.button__contact.open-loading svg {
+    display: inline-block;
+    visibility: visible;
+    opacity: 1;
+    transition: 1s opacity;
+    top: 50%;
+    transform: scale(0.25) translateY(-50%) translateX(-50%);
+    transform-origin: 0 0 0;
+    left: 40px;
+}
+
+.button__contact.failed {
+    background-color: #D76C5E;
+}
+.button__contact.succeed {
+    background-color: #29ABA4;
 }
