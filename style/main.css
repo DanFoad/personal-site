@@ -231,6 +231,11 @@ main {
     position: relative;
     border: 1px solid #B1C2CD;
 }
+.project__image img {
+    width: 256px;
+    display: inline-block;
+    border-bottom: 1px solid #B1C2CD;
+}
 .project__title {
     font-size: 1.5rem;
     padding: 16px;
@@ -270,6 +275,42 @@ main {
     .projects {
         justify-content: space-around;
     }
+}
+
+/**** SKILLS ****/
+.skills__container {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: stretch;
+    justify-content: space-between;
+    margin-bottom: 32px;
+}
+.skill {
+    flex: 1;
+    margin: 32px 64px;
+}
+.skill svg {
+    width: 50%;
+    margin: 0 auto 16px;
+    display: block;
+}
+.skill__title {
+    text-align: center;
+    font-size: 2rem;
+    border-bottom: 1px solid #637F91;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+}
+.skill__list {
+    list-style: none;
+    text-align: center;
+}
+.skill__item {
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    margin: 8px 0;
+    letter-spacing: 2px;
+    color: rgba(0,0,0,0.5);
 }
 
 /**** CONTACT ****/

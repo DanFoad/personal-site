@@ -22,6 +22,7 @@
     <header id="main-header">
         <nav class="header__nav container">
             <ul class="nav__links">
+                <li class="nav__link"><a href="CV.pdf">CV</a></li>
                 <li class="nav__link"><a href="https://github.com/DanFoad">GitHub</a></li>
                 <li class="nav__link"><a href="https://uk.linkedin.com/in/danfoad">LinkedIn</a></li>
                 <button class="nav__button smooth-scroll" data-to="contact">Contact Me</button>
@@ -42,7 +43,7 @@
 
             <section class="projects">
                 <div class="project">
-                        <figure class="project__image"><img src="http://lorempixel.com/256/128" alt=""></figure>
+                        <figure class="project__image"><img src="img/austin-crime-zone.png" alt=""></figure>
                         <h3 class="project__title">Austin Crime Zone</h3>
                         <p class="project__description">Web app that allows you to find out how dangerous a particular zone is within Austin, TX. Apply filters to refine incident data to your needs.</p>
                         <aside class="project__links">
@@ -50,7 +51,7 @@
                         </aside>
                 </div>
                 <div class="project">
-                        <figure class="project__image"><img src="http://lorempixel.com/256/128" alt=""></figure>
+                        <figure class="project__image"><img src="img/hold-buttons.png" alt=""></figure>
                         <h3 class="project__title">Hold-To-Confirm Buttons</h3>
                         <p class="project__description">CSS designs of hold-to-confirm buttons that offer an alternative to modal confirmations by having the user hold the button down.</p>
                         <aside class="project__links">
@@ -58,7 +59,7 @@
                         </aside>
                 </div>
                 <div class="project">
-                        <figure class="project__image"><img src="http://lorempixel.com/256/128" alt=""></figure>
+                        <figure class="project__image"><img src="img/obesity-poverty-london.png" alt=""></figure>
                         <h3 class="project__title">Obesity-Poverty London</h3>
                         <p class="project__description">A webapp to show the interesting correlation between obesity and poverty rates using open-source data about the boroughs of London and an interactive map.</p>
                         <aside class="project__links" title="Visit Site">
@@ -66,7 +67,7 @@
                         </aside>
                 </div>
                 <div class="project">
-                        <figure class="project__image"><img src="http://lorempixel.com/256/128" alt=""></figure>
+                        <figure class="project__image"><img src="img/book-lipsum.png" alt=""></figure>
                         <h3 class="project__title">Book Lipsum</h3>
                         <p class="project__description">Replace your standard Lorem Ipsum filler text with passages from popular classic novels such as A Tale of Two Cities by Charles Dickens.</p>
                         <aside class="project__links">
@@ -76,8 +77,43 @@
             </section>
 
         </div>
-        <div id="skills" class="container">
-            <h2 class="main__title">Skills</h2>
+        <div id="skills">
+            <h2 class="main__title container">Skills</h2>
+            <section class="skills__container container">
+                <div class="skill">
+                    <svg viewBox="0 0 128 128">
+                        <path fill="#637F91" d="M9.032 2l10.005 112.093 44.896 12.401 45.02-12.387 10.015-112.107h-109.936zm89.126 26.539l-.627 7.172-.276 3.289h-52.665000000000006l1.257 14h50.156000000000006l-.336 3.471-3.233 36.119-.238 2.27-28.196 7.749v.002l-.034.018-28.177-7.423-1.913-21.206h13.815000000000001l.979 10.919 15.287 4.081h.043v-.546l15.355-3.875 1.604-17.579h-47.698l-3.383-38.117-.329-3.883h68.939l-.33 3.539z"></path>
+                    </svg>
+                    <h3 class="skill__title">HTML</h3>
+                    <ul class="skill__list">
+                        <li class="skill__item">HTML 5</li>
+                        <li class="skill__item">XHTML</li>
+                        <li class="skill__item">Jade</li>
+                    </ul>
+                </div>
+                <div class="skill">
+                    <svg viewBox="0 0 128 128">
+                        <path fill="#637F91" d="M8.76 1l10.055 112.883 45.118 12.58 45.244-12.626 10.063-112.837h-110.48zm89.591 25.862l-3.347 37.605.01.203-.014.467v-.004l-2.378 26.294-.262 2.336-28.36 7.844v.001l-.022.019-28.311-7.888-1.917-21.739h13.883l.985 11.054 15.386 4.17-.004.008v-.002l15.443-4.229 1.632-18.001h-32.282999999999994l-.277-3.043-.631-7.129-.331-3.828h34.748999999999995l1.264-14h-52.926l-.277-3.041-.63-7.131-.332-3.828h69.281l-.331 3.862z"></path>
+                    </svg>
+                    <h3 class="skill__title">CSS</h3>
+                    <ul class="skill__list">
+                        <li class="skill__item">CSS3</li>
+                        <li class="skill__item">Responsive Design</li>
+                        <li class="skill__item">Sass</li>
+                    </ul>
+                </div>
+                <div class="skill">
+                    <svg viewBox="0 0 128 128">
+                        <path fill="#637F91" d="M2 1v125h125v-125h-125zm66.119 106.513c-1.845 3.749-5.367 6.212-9.448 7.401-6.271 1.44-12.269.619-16.731-2.059-2.986-1.832-5.318-4.652-6.901-7.901l9.52-5.83c.083.035.333.487.667 1.071 1.214 2.034 2.261 3.474 4.319 4.485 2.022.69 6.461 1.131 8.175-2.427 1.047-1.81.714-7.628.714-14.065-.001-10.115.046-20.188.046-30.188h11.709c0 11 .06 21.418 0 32.152.025 6.58.596 12.446-2.07 17.361zm48.574-3.308c-4.07 13.922-26.762 14.374-35.83 5.176-1.916-2.165-3.117-3.296-4.26-5.795 4.819-2.772 4.819-2.772 9.508-5.485 2.547 3.915 4.902 6.068 9.139 6.949 5.748.702 11.531-1.273 10.234-7.378-1.333-4.986-11.77-6.199-18.873-11.531-7.211-4.843-8.901-16.611-2.975-23.335 1.975-2.487 5.343-4.343 8.877-5.235l3.688-.477c7.081-.143 11.507 1.727 14.756 5.355.904.916 1.642 1.904 3.022 4.045-3.772 2.404-3.76 2.381-9.163 5.879-1.154-2.486-3.069-4.046-5.093-4.724-3.142-.952-7.104.083-7.926 3.403-.285 1.023-.226 1.975.227 3.665 1.273 2.903 5.545 4.165 9.377 5.926 11.031 4.474 14.756 9.271 15.672 14.981.882 4.916-.213 8.105-.38 8.581z"></path>
+                    </svg>
+                    <h3 class="skill__title">JavaScript</h3>
+                    <ul class="skill__list">
+                        <li class="skill__item">JSON</li>
+                        <li class="skill__item">jQuery</li>
+                        <li class="skill__item">Handlebars.js</li>
+                    </ul>
+                </div>
+            </section>
         </div>
         <div id="contact">
             <h2 class="main__title container">Contact Me</h2>
@@ -116,10 +152,11 @@
                 </div>
             </section>
             <section class="userlinks container">
-                <a href="mailto:contact@danfoad.co.uk" class="userlinks__link"><svg xmlns:xlink="http://www.w3.org/1999/xlink" height="89.28203230275508" width="95" style="left: -60px; top: 600px;"><g><polygon points="10,44.64101615137754 30.00000000000001,79.28203230275508 70,79.28203230275508 90,44.64101615137754 70,10 30.00000000000001,10" class="hex" style="stroke: rgb(112, 140, 158);"></polygon><text x="42" y="51">&#xf0e0;</text></g></svg></a>
-                <a href="https://github.com/DanFoad" class="userlinks__link"><svg xmlns:xlink="http://www.w3.org/1999/xlink" height="89.28203230275508" width="95" style="left: -60px; top: 600px;"><g><polygon points="10,44.64101615137754 30.00000000000001,79.28203230275508 70,79.28203230275508 90,44.64101615137754 70,10 30.00000000000001,10" class="hex" style="stroke: rgb(112, 140, 158);"></polygon><text x="42" y="51">&#xf09b;</text></g></svg></a>
-                <a href="https://uk.linkedin.com/in/danfoad" class="userlinks__link"><svg xmlns:xlink="http://www.w3.org/1999/xlink" height="89.28203230275508" width="95" style="left: -60px; top: 600px;"><g><polygon points="10,44.64101615137754 30.00000000000001,79.28203230275508 70,79.28203230275508 90,44.64101615137754 70,10 30.00000000000001,10" class="hex" style="stroke: rgb(112, 140, 158);"></polygon><text x="42" y="51">&#xf0e1;</text></g></svg></a>
-                <a href="https://twitter.com/FoadDan" class="userlinks__link"><svg xmlns:xlink="http://www.w3.org/1999/xlink" height="89.28203230275508" width="95" style="left: -60px; top: 600px;"><g><polygon points="10,44.64101615137754 30.00000000000001,79.28203230275508 70,79.28203230275508 90,44.64101615137754 70,10 30.00000000000001,10" class="hex" style="stroke: rgb(112, 140, 158);"></polygon><text x="42" y="51">&#xf099;</text></g></svg></a>
+                <a href="mailto:contact@danfoad.co.uk" class="userlinks__link" title="Email"><svg xmlns:xlink="http://www.w3.org/1999/xlink" height="89.28203230275508" width="95" style="left: -60px; top: 600px;"><g><polygon points="10,44.64101615137754 30.00000000000001,79.28203230275508 70,79.28203230275508 90,44.64101615137754 70,10 30.00000000000001,10" class="hex" style="stroke: rgb(112, 140, 158);"></polygon><text x="40" y="51">&#xf0e0;</text></g></svg></a>
+                <a href="https://github.com/DanFoad" class="userlinks__link" title="GitHub"><svg xmlns:xlink="http://www.w3.org/1999/xlink" height="89.28203230275508" width="95" style="left: -60px; top: 600px;"><g><polygon points="10,44.64101615137754 30.00000000000001,79.28203230275508 70,79.28203230275508 90,44.64101615137754 70,10 30.00000000000001,10" class="hex" style="stroke: rgb(112, 140, 158);"></polygon><text x="42" y="51">&#xf09b;</text></g></svg></a>
+                <a href="https://uk.linkedin.com/in/danfoad" class="userlinks__link" title="LinkedIn"><svg xmlns:xlink="http://www.w3.org/1999/xlink" height="89.28203230275508" width="95" style="left: -60px; top: 600px;"><g><polygon points="10,44.64101615137754 30.00000000000001,79.28203230275508 70,79.28203230275508 90,44.64101615137754 70,10 30.00000000000001,10" class="hex" style="stroke: rgb(112, 140, 158);"></polygon><text x="42" y="51">&#xf0e1;</text></g></svg></a>
+                <a href="https://twitter.com/FoadDan" class="userlinks__link" title="Twitter"><svg xmlns:xlink="http://www.w3.org/1999/xlink" height="89.28203230275508" width="95" style="left: -60px; top: 600px;"><g><polygon points="10,44.64101615137754 30.00000000000001,79.28203230275508 70,79.28203230275508 90,44.64101615137754 70,10 30.00000000000001,10" class="hex" style="stroke: rgb(112, 140, 158);"></polygon><text x="42" y="52">&#xf099;</text></g></svg></a>
+                <a href="https://twitter.com/FoadDan" class="userlinks__link" title="CV"><svg xmlns:xlink="http://www.w3.org/1999/xlink" height="89.28203230275508" width="95" style="left: -60px; top: 600px;"><g><polygon points="10,44.64101615137754 30.00000000000001,79.28203230275508 70,79.28203230275508 90,44.64101615137754 70,10 30.00000000000001,10" class="hex" style="stroke: rgb(112, 140, 158);"></polygon><text x="43" y="52">&#xf1c1;</text></g></svg></a>
             </section>
         </div>
     </main>
