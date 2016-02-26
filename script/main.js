@@ -152,6 +152,15 @@ $("#contact__form").on("submit", function(e) {
     });
 });
 
+$(window).on("scroll", function() {
+    var height = $(window).scrollTop();
+    if (height > $(window).height()) {
+        $(".to-top").fadeIn();
+    } else {
+        $(".to-top").fadeOut();
+    }
+});
+
 /**** CONTACT BUTTON ANIMATION ****/
 /**
  * Developed by http://lmgonzalves.github.io/
