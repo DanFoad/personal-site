@@ -42,6 +42,22 @@ function init() {
             fadeHex(entry);
         }, Math.floor(Math.random() * 4000) + 2000);
     });
+    
+    var headerIsVisible = false;
+    
+    $(window).scroll(function(e) {
+        if ($(window).scrollTop() >= $("main").offset().top) {
+            if (!headerIsVisible) {
+                $(".header__nav--fixed").slideDown(200);
+                headerIsVisible = true;
+            }
+        } else {
+            if (headerIsVisible) {
+                $(".header__nav--fixed").slideUp(200);
+                headerIsVisible = false;
+            }
+        }
+    });
 }
 init();
 
