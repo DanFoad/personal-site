@@ -88,10 +88,13 @@ function generateHexagon(a, left, top) {
     svg.setAttribute("height", d2 + 40);
     svg.setAttribute("width", d + 40);
 
+    var colour = changeLightness("#4F6B7D", Math.floor(Math.random() * 40) - 20);
+    
     var poly = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
     poly.setAttribute("points", points);
     poly.setAttribute("class", "hex");
-    poly.style.stroke = changeLightness("#4F6B7D", Math.floor(Math.random() * 40) - 20);
+    poly.style.stroke = colour;
+    poly.style.fill = colour;
 
     svg.appendChild(poly);
     svg.style.left = left + "px";
