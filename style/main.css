@@ -258,7 +258,7 @@ button {
     position: absolute;
     z-index: 0;
 }
-@media all and (max-width: 480px) {
+@media all and (max-width: 720px) {
     #main-header {
         height: auto;
     }
@@ -271,6 +271,10 @@ button {
     .header__hero {
         justify-content: flex-start;
         margin-bottom: 360px;
+    }
+    .header__nav--fixed {
+        visibility: hidden;
+        pointer-events: none;
     }
 }
 
@@ -399,6 +403,7 @@ main.page {
     display: block;
     position: absolute;
     bottom: -64px;
+    bottom: -64px;
     left: 0;
     right: 0;
     height: 1px;
@@ -406,11 +411,40 @@ main.page {
     background-color: #AAAAAA;
     box-shadow: 0 1px 0 rgba(0,0,0,0.15);
 }
-@media all and (max-width: 480px) {
+@media all and (max-width: 720px) {
     .project {
-        width: 258px;
-        background-color: #FAFAFA;
-        border: 1px solid #B1C2CD;
+        display: inline-flex;
+        flex-flow: column nowrap;
+        align-items: flex-start;
+        justify-content: space-between;
+        max-height: inherit;
+    }
+    .project__content {
+        width: 100%;
+        padding-right: 8px;
+    }
+    .project__image {
+        width: 100%;
+        border-right: 0;
+    }
+    .project__image img {
+        width: 100%;
+        border-bottom: 4px solid #B1C2CD;
+    }
+    .project__links {
+        position: static;
+        margin: 32px 16px 0;
+    }
+    .project:nth-child(2n) .project__image {
+        order: 0;
+        border-left: 0;
+    }
+    .project:nth-child(2n) .project__content {
+        text-align: left;
+    }
+    .project__skill {
+        display: inline-block;
+        margin-bottom: 12px;
     }
 }
 
