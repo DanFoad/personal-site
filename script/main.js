@@ -287,7 +287,7 @@ LoadingButton.prototype = {
     successAnimation: function(){
         var self = this;
         self.successSegment.draw('100% - 50', '100%', 0.4, {callback: function(){
-            self.span.innerHTML = 'Succeed';
+            self.span.innerHTML = 'Sent';
             classie.add(self.el, 'succeed');
             //setTimeout(function(){ self.reset(); }, 2000);
         }});
