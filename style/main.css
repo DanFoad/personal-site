@@ -14,7 +14,6 @@ html, body {
     font-size: 62.5%;
 }
 body.page {
-    background-color: #F5F5F5;
     position: relative;
 }
 .container {
@@ -142,18 +141,19 @@ button {
     z-index: 100;
 }
 .header__nav--fixed {
-    background-color: rgba(255,255,255,0.95);
+    background-color: rgba(30,40,46,0.95);
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    border-bottom: 4px solid #63859B;
     height: 8rem;
-    line-height: 8rem;
+    line-height: 8.1rem;
     font-size: 1.4rem;
     z-index: 100;
     width: 100%;
     display: none;
+    border-bottom: 4px solid #3B505D;
+    overflow-y: hidden;
 }
 .header__nav--fixed .container {
     display: flex;
@@ -167,9 +167,34 @@ button {
     display: inline-block;
     width: auto;
     font-size: 2.4em;
-    font-weight: 400;
+    font-weight: 100;
     letter-spacing: 1px;
-    color: #3B505D;
+    color: #FFFFFF;
+}
+.header__nav--fixed .nav__title {
+    background-color: #3B505D;
+    position: relative;
+}
+.header__nav--fixed .nav__title:before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: -2000px;
+    width: 2000px;
+    height: 100%;
+    background-color: #3B505D;
+}
+.header__nav--fixed .nav__title:after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: -32px;
+    top: -32px;
+    width: 56px;
+    height: 128px;
+    transform: rotate(35deg);
+    background-color: #3B505D;
+    z-index: -1;
 }
 .nav__title img {
     display: inline-block;
@@ -198,12 +223,14 @@ button {
     font-weight: 700;
     padding: 0 32px;
     transition: all 0.2s;
+    position: relative;
+    top: 4px;
+}
+.header__nav--fixed .nav__link a {
+    color: rgba(255,255,255,0.4);
 }
 .nav__link a:hover {
     color: #FFFFFF;
-}
-.header__nav--fixed .nav__link a:hover {
-    color: #222222;
 }
 .nav__button {
     -webkit-appearance: none;
@@ -226,6 +253,14 @@ button {
 .nav__button:hover {
     background-color: #8EA7B7;
     color: #1E282E;
+}
+.header__nav--fixed .nav__button {
+    color: rgba(255,255,255,0.5);
+    border-color: rgba(255,255,255,0.5);
+}
+.header__nav--fixed .nav__button:hover {
+    background-color: rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.6);
 }
 .hero__scroll {
     height: 4.5rem;
@@ -309,11 +344,14 @@ main.page {
     position: absolute;
     right: 0;
     bottom: 0;
-    border-top: 50px solid #F5F5F5;
+    border-top: 50px solid #FFFFFF;
     border-left: 50px solid #E0E0E0;
 }
 
 /**** PROJECTS ****/
+#projects {
+    padding-top: 32px;
+}
 .projects {
     display: flex;
     flex-flow: column nowrap;
@@ -326,8 +364,9 @@ main.page {
     justify-content: space-between;
     width: 100%;
     max-height: 256px;
-    margin: 64px 0;
+    margin: 128px 0;
     position: relative;
+    box-shadow: 20px 20px -20px 0 rgba(12,12,12,0.4);
 }
 .project:nth-child(2n) .project__image {
     order:2;
@@ -413,8 +452,7 @@ main.page {
 .project__separator {
     display: block;
     position: absolute;
-    bottom: -64px;
-    bottom: -64px;
+    bottom: -128px;
     left: 0;
     right: 0;
     height: 1px;
@@ -774,13 +812,11 @@ main.page {
 .typographyimage {
     margin-bottom: 8px;
     height: 64px;
-    -webkit-filter: brightness(0.96);
-    filter: brightness(0.96);
 }
 .content__inner dt a {
     color: #63859B;
     text-decoration: none;
-    background-color: #F5F5F5;
+    background-color: #FFFFFF;
     height: 24px;
     position: relative;
     top: -12px;
