@@ -2,18 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dan Foad :: Web Developer</title>
+    <title>Dan Foad - Freelance Web Developer</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
     <meta name="author" content="Dan Foad">
-    <meta name="description" content="Personal site for Dan Foad, a front-end web developer living in the UK">
+    <meta name="description" content="Personal site and portfolio for Dan Foad, web developer, software engineer and student living in the UK">
 
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Play">
-    <link rel="stylesheet" href="style/main.css?v=2">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,700">
+    <link rel="stylesheet" href="style/main.css">
 
-    <link rel="icon" type="image/png" href="favicon.png?v=2">
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-194x194.png" sizes="194x194">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+    <meta name="theme-color" content="#ffffff">
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
@@ -21,135 +38,167 @@
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
-<body>
-    <header>
-        <img id="header__logo" src="style/logo.png" alt="">
-        <h1><a href="/">[Dan Foad]</a></h1>
-
-        <nav class="nav__main">
-            <ul>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">My Skills</a></li>
-                <li><a href="#contact">Contact Me</a></li>
+<body id="body">
+    <header id="main-header">
+        <nav class="header__nav container">
+            <ul class="nav__links">
+                <li class="nav__link"><a href="CV.pdf">CV</a></li>
+                <li class="nav__link"><a href="https://github.com/DanFoad">GitHub</a></li>
+                <li class="nav__link"><a href="https://uk.linkedin.com/in/danfoad">LinkedIn</a></li>
+                <button class="nav__button smooth-scroll" data-to="contact">Contact Me</button>
             </ul>
         </nav>
 
+        <section class="header__hero">
+            <h1 class="hero__title">Dan Foad.</h1>
+            <h3 class="hero__subtitle">Freelance Web Developer, Prospective Software Engineer, Undergraduate student</h3>
+            <button class="hero__cta smooth-scroll" data-to="contact"><span>Contact Me</span></button>
+            <div class="hero__scroll smooth-scroll" data-to="projects"><i class="fa fa-angle-double-down"></i></div>
+        </section>
     </header>
-
-    <div id="about">
-        <div>
-            <p class="large">Hi, my name's Dan Foad and I build websites</p>
-            <p class="description">I'm a freelance/hobbyist web developer living in Birmingham. I specialise mainly in front-end development work but I don't mind poking about in PHP and MySQL if needed though. This is my personal site and portfolio.</p>
-            <button class="button__contact">Contact Me</button>
+    
+    <nav class="header__nav--fixed">
+        <div class="container">
+            <h1 class="nav__title"><img src="favicon-96x96.png" alt="">Dan Foad</h1>
+            <ul class="nav__links">
+                <li class="nav__link"><a href="CV.pdf">CV</a></li>
+                <li class="nav__link"><a href="https://github.com/DanFoad">GitHub</a></li>
+                <li class="nav__link"><a href="https://uk.linkedin.com/in/danfoad">LinkedIn</a></li>
+                <button class="nav__button smooth-scroll" data-to="contact">Contact Me</button>
+            </ul>
         </div>
-    </div>
+    </nav>
 
-    <main role="main">
+    <main role="main" class="index">
+        <div id="projects" class="container">
+            <h1 class="main__title"><span>Projects</span></h1>
 
-        <div id="projects">
-            <h2 class="title"><a href="#projects">Projects</a></h2>
-            <div class="preview__container">
-                <a href="/hold-buttons/"><div class="preview">
-                    <img class="preview__image" src="img/hold-button-preview.png" alt="">
-                    <h4 class="preview__title">Hold-To-Confirm Buttons</h4>
-                    <p class="preview__description">CSS designs of hold-to-confirm buttons that offer an alternative to modal confirmations by having the user hold the button down.</p>
-                </div></a>
-                <a href="/austin-crime-zone/"><div class="preview">
-                    <img class="preview__image" src="img/austin-crime-preview.png" alt="">
-                    <h4 class="preview__title">Austin Crime Zone</h4>
-                    <p class="preview__description">Web app that allows you to find out how dangerous a particular zone is within Austin, TX. Apply filters to refine incident data to your needs.</p>
-                </div></a>
-                <a href="/book-lipsum/"><div class="preview">
-                    <img class="preview__image" src="img/book-lipsum-preview.png" alt="">
-                    <h4 class="preview__title">Book Lipsum</h4>
-                    <p class="preview__description">Replace your standard Lorem Ipsum filler text with passages from popular classic novels such as A Tale of Two Cities by Charles Dickens.</p>
-                </div></a>
-                <a href="/obesity-poverty-london/"><div class="preview">
-                    <img class="preview__image" src="img/obesity-poverty-london-preview.png" alt="">
-                    <h4 class="preview__title">Obesity Poverty London</h4>
-                    <p class="preview__description">A webapp to show the interesting correlation between obesity and poverty rates using open-source data about the boroughs of London and an interactive map.</p>
-                </div></a>
-            </div>
-            <p>The source code for all of these projects and any that have not been posted here is available at my GitHub account. <a href="https://github.com/DanFoad">https://github.com/DanFoad</a>.
+            <section class="projects">
+                <div class="project">
+                    <figure class="project__image"><img src="img/austin-crime-zone.png" alt=""></figure>
+                    <div class="project__content">
+                        <h3 class="project__title">Austin Crime Zone</h3>
+                        <p class="project__description">Web app that allows you to find out how dangerous a particular zone is within Austin, TX. Apply filters to refine incident data to your needs.</p>
+                        <p class="project__skills">Skills:
+                            <span class="project__skill">HTML</span>
+                            <span class="project__skill">CSS</span>
+                            <span class="project__skill">Javascript</span>
+                            <span class="project__skill">jQuery</span>
+                            <span class="project__skill">Google Maps API</span>
+                            <span class="project__skill">AJAX</span>
+                            <span class="project__skill">GIS</span>
+                            <span class="project__skill">QUnit</span>
+                        </p>
+                        <aside class="project__links">
+                            <a href="/austin-crime-zone/" title="Visit Site"><i class="fa fa-external-link"></i>Visit Site</a><a href="https://github.com/DanFoad/austin-crime-zone" title="View Code"><i class="fa fa-github"></i>View Code</a>
+                        </aside>
+                    </div>
+                    <hr class="project__separator">
+                </div>
+                <div class="project">
+                    <figure class="project__image"><img src="img/hold-buttons.png" alt=""></figure>
+                    <div class="project__content">
+                        <h3 class="project__title">Hold-To-Confirm Buttons</h3>
+                        <p class="project__description">CSS designs of hold-to-confirm buttons that offer an alternative to modal confirmations by having the user hold the button down.</p>
+                        <p class="project__skills">Skills:
+                            <span class="project__skill">HTML</span>
+                            <span class="project__skill">CSS</span>
+                            <span class="project__skill">Javascript</span>
+                            <span class="project__skill">jQuery</span>
+                        </p>
+                        <aside class="project__links">
+                            <a href="/hold-buttons/" title="Visit Site"><i class="fa fa-external-link"></i>Visit Site</a><a href="https://github.com/DanFoad/hold-buttons" title="View Code"><i class="fa fa-github"></i>View Code</a>
+                        </aside>
+                    </div>
+                    <hr class="project__separator">
+                </div>
+                <div class="project">
+                    <figure class="project__image"><img src="img/obesity-poverty-london.png" alt=""></figure>
+                    <div class="project__content">
+                        <h3 class="project__title">Obesity-Poverty London</h3>
+                        <p class="project__description">A webapp to show the interesting correlation between obesity and poverty rates using open-source data about the boroughs of London and an interactive map.</p>
+                        <p class="project__skills">Skills:
+                            <span class="project__skill">HTML</span>
+                            <span class="project__skill">CSS</span>
+                            <span class="project__skill">Javascript</span>
+                            <span class="project__skill">jQuery</span>
+                            <span class="project__skill">Google Maps API</span>
+                            <span class="project__skill">AJAX</span>
+                            <span class="project__skill">GIS</span>
+                        </p>
+                        <aside class="project__links" title="Visit Site">
+                            <a href="/obesity-poverty-london/"><i class="fa fa-external-link"></i>Visit Site</a><a href="https://github.com/DanFoad/obesity-poverty-london" title="View Code"><i class="fa fa-github"></i>View Code</a>
+                        </aside>
+                    </div>
+                    <hr class="project__separator">
+                </div>
+                <div class="project">
+                    <figure class="project__image"><img src="img/book-lipsum.png" alt=""></figure>
+                    <div class="project__content">
+                        <h3 class="project__title">Book Lipsum</h3>
+                        <p class="project__description">Replace your standard Lorem Ipsum filler text with passages from popular classic novels such as A Tale of Two Cities by Charles Dickens.</p>
+                        <p class="project__skills">Skills:
+                            <span class="project__skill">HTML</span>
+                            <span class="project__skill">CSS</span>
+                            <span class="project__skill">Javascript</span>
+                            <span class="project__skill">jQuery</span>
+                        </p>
+                        <aside class="project__links">
+                            <a href="/book-lipsum/" title="Visit Site"><i class="fa fa-external-link"></i>Visit Site</a><a href="https://github.com/DanFoad/book-lipsum" title="View Code"><i class="fa fa-github"></i>View Code</a>
+                        </aside>
+                    </div>
+                </div>
+            </section>
+
         </div>
-
-        <div id="skills">
-            <h2 class="title"><a href="#skills">My Skills</a></h2>
-            <div class="skills__skill">
-                <h3>HTML <span class="skills__img"><i class="fa fa-html5"></i></span></h3>
-                <ul>
-                    <li>HTML5</li>
-                    <li>XHTML</li>
-                    <li>Emmet/Zen Coding</li>
-                </ul>
-            </div>
-            <div class="skills__skill">
-                <h3>CSS <span class="skills__img"><i class="fa fa-css3"></i></span></h3>
-                <ul>
-                    <li>CSS3</li>
-                    <li>Responsive Design</li>
-                    <li>Sass</li>
-                </ul>
-            </div>
-            <div class="skills__skill">
-                <h3>JavaScript <span class="skills__img"><i class="fa fa-code"></i></span></h3>
-                <ul>
-                    <li>JSON</li>
-                    <li>jQuery</li>
-                    <li>QUnit</li>
-                </ul>
-            </div>
-        </div>
-
         <div id="contact">
-            <h2 class="title"><a href="#contact">Contact Me</a></h2>
+            <h2 class="main__title container">Contact Me</h2>
+            <section class="contact__area container">
+                <form id="contact__form" action="contact.php" method="post">
+                    <div class="contact__input">
+                        <input id="contact__name" name="name" type="text" required>
+                        <span class="contact__input--title">Your Name</span>
+                        <span class="contact__input--valid" id="contact__name--valid"><i class="fa fa-check"></i></span>
+                    </div>
+                    <div class="contact__input">
+                        <input id="contact__email" name="email" type="email" required>
+                        <span class="contact__input--title">Email Address</span>
+                        <span class="contact__input--valid" id="contact__email--valid"><i class="fa fa-check"></i></span>
+                    </div>
+                    <div id="contact__message--container">
+                        <textarea name="message" id="contact__message" cols="30" rows="5" required></textarea>
+                        <span class="contact__input--title">Your Message</span>
+                    </div>
 
-            <a class="contact__link" href="mailto:contact@danfoad.co.uk"><i class="fa fa-envelope-o"></i>contact@danfoad.co.uk</a>
-            <a class="contact__link" href="https://twitter.com/FoadDan"><i class="fa fa-twitter"></i>@FoadDan</a>
-            <a class="contact__link" href="https://uk.linkedin.com/in/danfoad"><i class="fa fa-linkedin-square"></i>Dan Foad</a>
-
-            <!-- Contact Form not working
-            <form id="contact__form" action="contact.php" method="post">
-                <div class="contact__input">
-                    <span class="contact__input--title">Name</span>
-                    <input id="contact__name" name="name" type="text" placeholder="What's your name?" required>
-                    <span class="contact__input--valid" id="contact__name--valid"><i class="fa fa-check"></i></span>
+                    <button class="button__contact" name="contact" type="submit">
+                        <script type="text/template" id="circular-loading">
+                            <svg width="120px" height="120px">
+                                <path class="outer-path" stroke="#fff" d="M 60 60 m 0 -50 a 50 50 0 1 1 0 100 a 50 50 0 1 1 0 -100"></path>
+                                <path class="inner-path" stroke="rgba(255, 255, 255, 0.5)" d="M 60 60 m 0 -30 a 30 30 0 1 1 0 60 a 30 30 0 1 1 0 -60"></path>
+                                <path class="success-path" stroke="#fff" d="M 60 10 A 50 50 0 0 1 91 21 L 75 45 L 55 75 L 45 65"></path>
+                                <path class="error-path" stroke="#fff" d="M 60 10 A 50 50 0 0 1 95 25 L 45 75"></path>
+                                <path class="error-path2" stroke="#fff" d="M 60 30 A 30 30 0 0 1 81 81 L 45 45"></path>
+                            </svg>
+                        </script>
+                        <span>Send</span>
+                    </button>
+                </form>
+                <div class="map">
+                    <img src="img/map.png" alt="">
                 </div>
-                <div class="contact__input">
-                    <span class="contact__input--title">Email</span>
-                    <input id="contact__email" name="email" type="email" placeholder="How can I get back to you?" required>
-                    <span class="contact__input--valid" id="contact__email--valid"><i class="fa fa-check"></i></span>
-                </div>
-                <div id="contact__message--container">
-                    <span class="contact__input--title">Message</span>
-                    <textarea name="message" id="contact__message" cols="30" rows="5" placeholder="What did you want to say?" required></textarea>
-                </div>
-
-                <button class="button__contact" name="contact">Send Me Your Message</button>
-            </form>
-            <p class="description" id="contact__response"></p>
-            -->
+            </section>
+            <section class="userlinks container">
+                <a href="mailto:contact@danfoad.co.uk" class="userlinks__link" title="Email"><svg xmlns:xlink="http://www.w3.org/1999/xlink" height="89.28203230275508" width="95" style="left: -60px; top: 600px;"><g><polygon points="10,44.64101615137754 30.00000000000001,79.28203230275508 70,79.28203230275508 90,44.64101615137754 70,10 30.00000000000001,10" class="hex" style="stroke: rgb(112, 140, 158);"></polygon><text x="40" y="51">&#xf0e0;</text></g></svg></a>
+                <a href="https://github.com/DanFoad" class="userlinks__link" title="GitHub"><svg xmlns:xlink="http://www.w3.org/1999/xlink" height="89.28203230275508" width="95" style="left: -60px; top: 600px;"><g><polygon points="10,44.64101615137754 30.00000000000001,79.28203230275508 70,79.28203230275508 90,44.64101615137754 70,10 30.00000000000001,10" class="hex" style="stroke: rgb(112, 140, 158);"></polygon><text x="42" y="51">&#xf09b;</text></g></svg></a>
+                <a href="https://uk.linkedin.com/in/danfoad" class="userlinks__link" title="LinkedIn"><svg xmlns:xlink="http://www.w3.org/1999/xlink" height="89.28203230275508" width="95" style="left: -60px; top: 600px;"><g><polygon points="10,44.64101615137754 30.00000000000001,79.28203230275508 70,79.28203230275508 90,44.64101615137754 70,10 30.00000000000001,10" class="hex" style="stroke: rgb(112, 140, 158);"></polygon><text x="42" y="51">&#xf0e1;</text></g></svg></a>
+                <a href="https://twitter.com/FoadDan" class="userlinks__link" title="Twitter"><svg xmlns:xlink="http://www.w3.org/1999/xlink" height="89.28203230275508" width="95" style="left: -60px; top: 600px;"><g><polygon points="10,44.64101615137754 30.00000000000001,79.28203230275508 70,79.28203230275508 90,44.64101615137754 70,10 30.00000000000001,10" class="hex" style="stroke: rgb(112, 140, 158);"></polygon><text x="42" y="52">&#xf099;</text></g></svg></a>
+                <a href="/CV.pdf" class="userlinks__link" title="CV"><svg xmlns:xlink="http://www.w3.org/1999/xlink" height="89.28203230275508" width="95" style="left: -60px; top: 600px;"><g><polygon points="10,44.64101615137754 30.00000000000001,79.28203230275508 70,79.28203230275508 90,44.64101615137754 70,10 30.00000000000001,10" class="hex" style="stroke: rgb(112, 140, 158);"></polygon><text x="43" y="52">&#xf1c1;</text></g></svg></a>
+            </section>
         </div>
-
     </main>
 
-    <i id="top" class="fa fa-angle-up" title="Back to top"></i>
-
-    <footer>
-        <img src="style/logo.png" alt="" />
-        &copy; 2015 - Dan Foad
-        <nav class="nav__main">
-            <ul>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">My Skills</a></li>
-                <li><a href="#contact">Contact Me</a></li>
-            </ul>
-        </nav>
-    </footer>
+    <div class="smooth-scroll to-top" data-to="body"><i class="fa fa-angle-up"></i></div>
 
     <script src="script/main.js"></script>
-
 </body>
 </html>
