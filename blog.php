@@ -3,6 +3,29 @@
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
 
+    function substrwords($text, $maxchar, $end='...') {
+        if (strlen($text) > $maxchar || $text == '') {
+            $words = preg_split('/\s/', $text);      
+            $output = '';
+            $i      = 0;
+            while (1) {
+                $length = strlen($output)+strlen($words[$i]);
+                if ($length > $maxchar) {
+                    break;
+                } 
+                else {
+                    $output .= " " . $words[$i];
+                    ++$i;
+                }
+            }
+            $output .= $end;
+        } 
+        else {
+            $output = $text;
+        }
+        return $output;
+    }
+
     require_once __DIR__ . "/includes/config.php";
 
     try {
@@ -32,18 +55,20 @@
             $sth->execute();
             $posts = $sth->fetchAll();
             
-            echo '<main role="main"><div class="container">';
+            $template = file_get_contents(__DIR__ . '/template/blog.html');
             
+            $templatePosts = "";
+            
+            $replace = array('{{title}}', '{{content}}', '{{date}}', '{{id}}', '{{uri}}');
             foreach ($posts as $post) {
-                $replace = array('{{title}}', '{{content}}', '{{date}}', '{{id}}', '{{uri}}');
-                $with = array($post['postTitle'], $post['postContent'], date('jS M Y H:i:s', strtotime($post['postDate'])), $post['postID'], $post['postURI']);
+                $with = array($post['postTitle'], substrwords($post['postContent'], 255), date('jS M Y H:i:s', strtotime($post['postDate'])), $post['postID'], $post['postURI']);
 
-                $template = file_get_contents(__DIR__ . '/template/blog.html');
+                $templateFragment = file_get_contents(__DIR__ . '/template/blog-fragment.html');
 
-                echo str_replace($replace, $with, $template);
+                $templatePosts .= str_replace($replace, $with, $templateFragment);
             }
             
-            echo '</div></main>';
+            echo str_replace(array("{{posts}}"), array($templatePosts), $template);
         }
 
     } catch(PDOException $e) {
