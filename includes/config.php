@@ -9,3 +9,14 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 //set timezone
 date_default_timezone_set('Europe/London');
+
+function __autoload($class) {
+   
+   $class = strtolower($class);
+
+   $classpath = __DIR__ . 'classes/class.'.$class . '.php';
+   if ( file_exists($classpath)) {
+      require_once $classpath;
+    }     
+     
+}

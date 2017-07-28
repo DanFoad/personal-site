@@ -33,6 +33,18 @@ else {
         include_once __DIR__ . '/projects/' . $project . '/index.html' ;
     }
     
+    if ($routes[0] == 'blog') {
+        require_once __DIR__ . '/template/header.php';
+        
+        if (isset($routes[1])) {
+            $blogURI = $routes[1];
+            include_once __DIR__ . '/blog.php' ;
+        } else {
+            include_once __DIR__ . '/blog.php' ;
+        }
+        
+        require_once __DIR__ .'/template/footer.php';
+    }
     
 }
 
