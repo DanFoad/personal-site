@@ -348,6 +348,34 @@ main.page {
     border-left: 50px solid #E0E0E0;
 }
 
+/**** FREELANCE ****/
+#freelance {
+    padding-top: 32px;
+}
+
+.img__gallery {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    margin: 16px 0;
+}
+.img__gallery .item {
+    flex-basis: calc(25% - 32px);
+    position: relative;
+    cursor: pointer;
+}
+.img__gallery img {
+    width: 100%;
+    opacity: 1;
+    transition: opacity 0.3s;
+    border-radius: 4px;
+    z-index: 1000;
+}
+.img__gallery img[data-src] {
+    opacity: 0;
+}
+
 /**** PROJECTS ****/
 #projects {
     padding-top: 32px;
@@ -412,6 +440,10 @@ main.page {
     border-bottom: 1px solid #63859B;
     margin: 0 4px;
     color: #666666;
+    text-decoration: none;
+}
+.project__skill:hover {
+    background-color: #DDDDDD;
 }
 .project:nth-child(2n) .project__links {
     left: auto;
@@ -903,4 +935,67 @@ footer img {
 }
 .nav__container a:visited {
     color: #63859B;
+}
+
+/**** LIGHTBOX ****/
+.lightbox {
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    z-index: 9001;
+    display: none;
+    opacity: 0;
+    transition: opacity: 0.3s;
+}
+.lightbox.visible {
+    display: block;
+    opacity: 1;
+}
+.lightbox__content {
+    max-width: 1200px;
+    max-height: 80%;
+    width: auto;
+    height: auto;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+}
+.lightbox__content img {
+    height: 100%;
+}
+
+/**** CODE LINK ****/
+.code__link {
+    border-radius: 4px;
+    border: 2px solid #B1C2CD;
+    display: inline-block;
+    margin-bottom: 32px;
+    transition: all 0.2s;
+}
+.code__link a {
+    color: #B1C2CD;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-block;
+    padding: 16px 32px;
+    width: 100%;
+    height: 100%;
+    transition: all 0.2s;
+}
+.code__link:hover a {
+    color: #FFFFFF;
+}
+.code__link:hover {
+    background-color: #B1C2CD;
 }

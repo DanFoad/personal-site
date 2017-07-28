@@ -20,14 +20,20 @@ foreach ($routesexplode as $route) {
 
 if (!isset($routes[0])) require_once __DIR__ . '/index.html' ;
 else {
-    require_once __DIR__ . '/template/header.php';
     
     if ($routes[0] == 'freelance') {
+        require_once __DIR__ . '/template/header.php';
         $project = htmlspecialchars($routes[1]);
         include_once __DIR__ . '/freelance/' . $project . '.html' ;
+        require_once __DIR__ .'/template/footer.php';
+    }
+  
+    if ($routes[0] == 'projects') {
+        $project = htmlspecialchars($routes[1]);
+        include_once __DIR__ . '/projects/' . $project . '/index.html' ;
     }
     
-    require_once __DIR__ .'/template/footer.php';
+    
 }
 
 ?>

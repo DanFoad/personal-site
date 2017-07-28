@@ -51,6 +51,16 @@
                                 <p>There is very little decorative text on the site so it meant that whatever font was chosen should not be too stylistic otherwise it would stand out too much, but it should still be more noticable than the body and title text that surrounds it. After a few different options, Raleway by Matt McInerney was chosen as its lightness and shape provided the best design to allow for wider kerning this created decorative text that stood out but fitted with the style of the rest of the site.</p>
                             </article>
                         </section>
+                        <br>
+                        <h3>Designs</h3>
+                        <section class="content__inner">
+                            <div class="img__gallery">
+                                <div class="item"><img data-src="/img/statscentral/0_Homepage.jpg" alt=""></div>
+                                <div class="item"><img data-src="/img/statscentral/1_Champions.jpg" alt=""></div>
+                                <div class="item"><img data-src="/img/statscentral/1.1_Champions.jpg" alt=""></div>
+                                <div class="item"><img data-src="/img/statscentral/2_Events.jpg" alt=""></div>
+                            </div>
+                        </section>
                     </article>
                 </section>
                 <section id="frontendtech" class="content__inner">
@@ -78,7 +88,7 @@
                     <article>
                         <h2>Stack</h2>
                         <figure>
-                            <img src="/img/statscentral/stackdiagram.png" alt="">
+                            <img data-src="/img/statscentral/stackdiagram.png" alt="">
                             <figcaption>Full Stack Diagram</figcaption>
                         </figure>
                         <p>The initial plan was to simply convert the raw data from the MongoDB server to useable JSON upon request and then inject that into the layout. However, as testing was undertaken into the scalability of the system, some problems were seen. As it was, this system would be far too slow to respond, would use far too much data and proposed a potential security risk with the client directly touching the server.</p>
@@ -88,3 +98,31 @@
                 </section>
             </section>
         </div>
+        
+        <div class="container">
+            <div class="code__link">
+                <a href="https://github.com/DanFoad/statscentral">View Code</a>
+            </div>
+        </div>
+        
+        <div class="lightbox">
+            <div class="lightbox__content"><img src="" alt=""></div>
+        </div>
+        
+        <script>
+            [].forEach.call(document.querySelectorAll('img[data-src]'),    function(img) {
+              img.setAttribute('src', img.getAttribute('data-src'));
+              img.onload = function() {
+                img.removeAttribute('data-src');
+              };
+            });
+            
+            $(".img__gallery img").click(function() {
+                $(".lightbox__content img").attr("src", $(this).attr("src"));
+                $(".lightbox").addClass("visible");
+            });
+            
+            $(".lightbox").click(function() {
+                $(".lightbox").removeClass("visible");
+            });
+        </script>
