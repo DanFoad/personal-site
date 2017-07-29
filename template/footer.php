@@ -4,7 +4,7 @@
     
     <footer>
         <section class="container">
-            <img src="/favicon-32x32.png" alt="" />
+            <a href="/"><img src="/favicon-32x32.png" alt="" /></a>
             &copy; 2017 - Dan Foad
 
             <div class="nav__container">

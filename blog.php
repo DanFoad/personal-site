@@ -39,8 +39,38 @@
             $sth->execute(array(':bloguri' => $blogURI));
             $post = $sth->fetchAll()[0];
             
-            $replace = array('{{title}}', '{{content}}', '{{date}}', '{{id}}');
-            $with = array($post['postTitle'], $post['postContent'], date('jS M Y H:i:s', strtotime($post['postDate'])), $post['postID']);
+            $sql = 'SELECT *
+            FROM blog_posts
+            WHERE postID = :previousID
+            LIMIT 1';
+            $sth = $db->prepare($sql);
+            $sth->execute(array(':previousID' => $post['postID'] - 1));
+            $post_previous = $post;
+            $hide_previous = "";
+            $row = $sth->fetch();
+            if (!empty($row)) {
+                $post_previous = $row;
+            } else {
+                $hide_previous = "blog__post--hidden";
+            }   
+            
+            $sql = 'SELECT *
+            FROM blog_posts
+            WHERE postID = :nextID
+            LIMIT 1';
+            $sth = $db->prepare($sql);
+            $sth->execute(array(':nextID' => $post['postID'] + 1));
+            $post_next = $post;
+            $hide_next = "";
+            $row = $sth->fetch();
+            if (!empty($row)) {
+                $post_next = $row;
+            } else {
+                $hide_next = "blog__post--hidden";
+            } 
+            
+            $replace = array('{{title}}', '{{content}}', '{{date}}', '{{id}}', '{{title_previous}}', '{{date_previous}}', '{{uri_previous}}', '{{title_next}}', '{{date_next}}', '{{uri_next}}', '{{hide_previous}}', '{{hide_next}}');
+            $with = array($post['postTitle'], $post['postContent'], date('jS M Y H:i:s', strtotime($post['postDate'])), $post['postID'], $post_previous['postTitle'], date('jS M Y H:i:s', strtotime($post_previous['postDate'])), $post_previous['postURI'], $post_next['postTitle'], date('jS M Y H:i:s', strtotime($post_next['postDate'])), $post_next['postURI'], $hide_previous, $hide_next);
             
             $template = file_get_contents(__DIR__ . '/template/blogpost.html');
             

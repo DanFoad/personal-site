@@ -1,8 +1,71 @@
-<main role="main" class="blogpost">
-    <div class="container" id="{{id}}">
-        <h1 class="blog__title">{{title}}</h1>
-        <p class="blog__content">{{content}}</p>
-        <p class="blog__date">Posted on: {{date}}</p>
-        <a href="/blog/">All blogs</a>
-    </div>
+<main role="main" class="blog container">
+    <section class="blog__posts">
+        <div class="blog__post" id="{{id}}">
+            <h1 class="blog__title">{{title}}</h1>
+            <p class="blog__date"><i class="fa fa-calendar"></i>{{date}}</p>
+            <p class="blog__content">{{content}}</p>
+        </div>
+        <div class="blog__footer">
+            <div class="blog__footer--links">
+                <a class="blog__readmore" href="/blog/">All Blogs</a>
+                <div class="blog__footer--social">
+                    <i class="fa fa-facebook-square"></i><i class="fa fa-twitter-square"></i><i class="fa fa-google-plus-square"></i><i class="fa fa-linkedin-square"></i>
+                </div>
+            </div>
+            <div class="blog__footer--posts">
+                <div class="blog__post {{hide_previous}}">
+                    <h1 class="blog__title">{{title_previous}}</h1>
+                    <p class="blog__date"><i class="fa fa-calendar"></i>{{date_previous}}</p>
+                    <a href="/blog/{{uri_previous}}/" class="blog__readmore">Previous Post</a>
+                </div>
+                <div class="blog__post {{hide_next}}">
+                    <h1 class="blog__title">{{title_next}}</h1>
+                    <p class="blog__date"><i class="fa fa-calendar"></i>{{date_next}}</p>
+                    <a href="/blog/{{uri_next}}/" class="blog__readmore">Next Post</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <aside class="blog__sidebar">
+        <div class="blog__search">
+            <div class="blog__search--container">
+                <input type="text" placeholder="Search all blogs..."><button><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+        <div class="blog__categories">
+            <h2>Categories</h2>
+            <ul>
+                <li>category</li>
+                <li>category</li>
+                <li>category</li>
+                <li>category</li>
+                <li>category</li>
+            </ul>
+        </div>
+        <div class="blog__recent">
+            <h2>Recent Blogs</h2>
+            <div class="blog__small">
+                <h3>Title of small blog</h3>
+                <p class="blog__date"><i class="fa fa-calendar"></i>January 1st 1970</p>
+            </div>
+            <div class="blog__small">
+                <h3>Title of small blog</h3>
+                <p class="blog__date"><i class="fa fa-calendar"></i>January 1st 1970</p>
+            </div>
+        </div>
+        <div class="blog__archives">
+            <h2>Archives</h2>
+            <ul>
+                <li>July 2017</li>
+                <li>June 2017</li>
+                <li>May 2017</li>
+                <li>April 2017</li>
+                <li>March 2017</li>
+            </ul>
+        </div>
+        <div class="blog__tags">
+            <h2>Tags</h2>
+            <div class="blog__tags--container"><span>content tag</span><span>tag</span><span>small thing</span><span>test tag</span></div>
+        </div>
+    </aside>
 </main>
