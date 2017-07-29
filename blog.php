@@ -26,11 +26,96 @@
         return $output;
     }
 
+    function urlify($text) {
+        $text = strtolower($text);
+        $text = preg_replace("/[^A-Za-z0-9 ]/", '', $text);
+        $text = preg_replace("/[ ]/", '-', $text);
+        return $text;
+    }
+
     require_once __DIR__ . "/includes/config.php";
 
     try {
         
+        // Sidebar
+        $templateSidebar = file_get_contents(__DIR__ . '/template/blog-sidebar.html');
+
+        // Categories
+        $sql = 'SELECT DISTINCT(postCategory) AS postCategory
+        FROM blog_posts
+        ORDER BY postCategory DESC';
+        $sth = $db->prepare($sql);
+        $sth->execute();
+        $categories = $sth->fetchAll();
+
+        $replace = '{{categories}}';
+        $with = "";
+        foreach ($categories as $category) {
+            $with = $with . '<li><a href="/blog/category/' . urlify($category['postCategory']) . '">' . $category['postCategory'] . '</a></li>';
+        }
+        $templateSidebar = str_replace($replace, $with, $templateSidebar);
+        
+        // Recent blogs
+        $sql = 'SELECT *
+        FROM blog_posts
+        ORDER BY postDate DESC
+        LIMIT 2';
+        $sth = $db->prepare($sql);
+        $sth->execute();
+        $recentPosts = $sth->fetchAll();
+
+        $replace = '{{recent}}';
+        $with = "";
+        foreach ($recentPosts as $recentPost) {
+            $with .= '<div class="blog__small">';
+            $with .= '    <h3><a href="/blog/' . $recentPost['postURI'] . '/">' . $recentPost['postTitle'] . '</a></h3>';
+            $with .= '    <p class="blog__date"><i class="fa fa-calendar"></i>' . date('jS M Y', strtotime($recentPost['postDate'])) . '</p>';
+            $with .= '</div>';
+        }
+        $templateSidebar = str_replace($replace, $with, $templateSidebar);
+        
+        // Archives
+        $sql = 'SELECT DISTINCT(postDate) as postDate
+        FROM blog_posts
+        ORDER BY postDate DESC';
+        $sth = $db->prepare($sql);
+        $sth->execute();
+        $dates = $sth->fetchAll();
+        
+        $months = "";
+        foreach ($dates as $date) {
+            $month = date('F Y', strtotime($date['postDate']));
+            if (!strpos($months, $month)) {
+                $months .= '<li>' . $month . '</li>';
+            }
+        }
+        $replace = '{{archives}}';
+        $with = $months;
+        $templateSidebar = str_replace($replace, $with, $templateSidebar);
+        
+        //Tags
+        $sql = 'SELECT postTags
+        FROM blog_posts';
+        $sth = $db->prepare($sql);
+        $sth->execute();
+        $rawtags = $sth->fetchAll();
+        
+        $tags = "";
+        foreach ($rawtags as $rawtag) {
+            $tags_split = explode(',', $rawtag['postTags']);
+            foreach ($tags_split as $tag) {
+                if (!strpos($tags, $tag)) {
+                    $tags .= '<span>' . $tag . '</span>';
+                }
+            }
+        }
+        $replace = '{{tags}}';
+        $with = $tags;
+        $templateSidebar = str_replace($replace, $with, $templateSidebar);
+        
+        // Individual Blog Pages
         if (isset($blogURI)) {
+            // Current blog
             $sql = 'SELECT *
             FROM blog_posts
             WHERE postURI = :bloguri
@@ -39,6 +124,7 @@
             $sth->execute(array(':bloguri' => $blogURI));
             $post = $sth->fetchAll()[0];
             
+            // Next and previous blogs
             $sql = 'SELECT *
             FROM blog_posts
             WHERE postID = :previousID
@@ -67,15 +153,56 @@
                 $post_next = $row;
             } else {
                 $hide_next = "blog__post--hidden";
-            } 
+            }
             
-            $replace = array('{{title}}', '{{content}}', '{{date}}', '{{id}}', '{{title_previous}}', '{{date_previous}}', '{{uri_previous}}', '{{title_next}}', '{{date_next}}', '{{uri_next}}', '{{hide_previous}}', '{{hide_next}}');
-            $with = array($post['postTitle'], $post['postContent'], date('jS M Y H:i:s', strtotime($post['postDate'])), $post['postID'], $post_previous['postTitle'], date('jS M Y H:i:s', strtotime($post_previous['postDate'])), $post_previous['postURI'], $post_next['postTitle'], date('jS M Y H:i:s', strtotime($post_next['postDate'])), $post_next['postURI'], $hide_previous, $hide_next);
+            // Main template
+            $replace = array('{{title}}', '{{content}}', '{{date}}', '{{category}}', '{{tags}}', '{{id}}', '{{title_previous}}', '{{date_previous}}', '{{uri_previous}}', '{{title_next}}', '{{date_next}}', '{{uri_next}}', '{{hide_previous}}', '{{hide_next}}', '{{sidebar}}');
+            
+            $tags = '';
+            foreach (explode(',', $post['postTags']) as $tag) {
+                $tags .= '<span>' . $tag . '</span>';
+            }
+            
+            $with = array($post['postTitle'], $post['postContent'], date('jS M Y', strtotime($post['postDate'])), $post['postCategory'], $tags, $post['postID'], $post_previous['postTitle'], date('jS M Y', strtotime($post_previous['postDate'])), $post_previous['postURI'], $post_next['postTitle'], date('jS M Y', strtotime($post_next['postDate'])), $post_next['postURI'], $hide_previous, $hide_next, $templateSidebar);
             
             $template = file_get_contents(__DIR__ . '/template/blogpost.html');
             
             echo str_replace($replace, $with, $template);
             
+        // Category blogs page
+        } else if (isset($blogCategory)) {
+            
+            $category = str_replace('-', ' ', $blogCategory);
+            
+            $sql = 'SELECT *
+            FROM blog_posts
+            WHERE postCategory = :category
+            ORDER BY postDate DESC
+            LIMIT 10';
+            $sth = $db->prepare($sql);
+            $sth->execute(array(':category' => $category));
+            $posts = $sth->fetchAll();
+            
+            $template = file_get_contents(__DIR__ . '/template/blog.html');
+            
+            $templatePosts = '<div class="blog__footer--links"><a class="blog__readmore" href="/blog/">All Posts</a></div>';
+            
+            $replace = array('{{title}}', '{{content}}', '{{date}}', '{{id}}', '{{uri}}', '{{tags}}', '{{category}}');
+            foreach ($posts as $post) {
+                $tags = '';
+                foreach (explode(',', $post['postTags']) as $tag) {
+                    $tags .= '<span>' . $tag . '</span>';
+                }
+                $with = array($post['postTitle'], substrwords($post['postContent'], 255), date('jS M Y', strtotime($post['postDate'])), $post['postID'], $post['postURI'], $tags, $post['postCategory']);
+
+                $templateFragment = file_get_contents(__DIR__ . '/template/blog-fragment.html');
+
+                $templatePosts .= str_replace($replace, $with, $templateFragment);
+            }
+            
+            echo str_replace(array('{{posts}}', '{{sidebar}}', '{{title_category}}'), array($templatePosts, $templateSidebar, ' - ' . ucwords($category)), $template);
+            
+        // All Blogs Page
         } else {
             $sql = 'SELECT *
             FROM blog_posts
@@ -89,16 +216,20 @@
             
             $templatePosts = "";
             
-            $replace = array('{{title}}', '{{content}}', '{{date}}', '{{id}}', '{{uri}}');
+            $replace = array('{{title}}', '{{content}}', '{{date}}', '{{id}}', '{{uri}}', '{{tags}}', '{{category}}');
             foreach ($posts as $post) {
-                $with = array($post['postTitle'], substrwords($post['postContent'], 255), date('jS M Y H:i:s', strtotime($post['postDate'])), $post['postID'], $post['postURI']);
+                $tags = '';
+                foreach (explode(',', $post['postTags']) as $tag) {
+                    $tags .= '<span>' . $tag . '</span>';
+                }
+                $with = array($post['postTitle'], substrwords($post['postContent'], 255), date('jS M Y', strtotime($post['postDate'])), $post['postID'], $post['postURI'], $tags, $post['postCategory']);
 
                 $templateFragment = file_get_contents(__DIR__ . '/template/blog-fragment.html');
 
                 $templatePosts .= str_replace($replace, $with, $templateFragment);
             }
             
-            echo str_replace(array("{{posts}}"), array($templatePosts), $template);
+            echo str_replace(array('{{posts}}', '{{sidebar}}', '{{title_category}}'), array($templatePosts, $templateSidebar, ''), $template);
         }
 
     } catch(PDOException $e) {

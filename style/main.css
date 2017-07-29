@@ -789,15 +789,25 @@ main.page {
     text-decoration: none;
     color: inherit;
 }
-.blog__date i {
+.blog__info p {
+    display: inline-block;
+    margin-right: 32px;
+}
+.blog__info i {
     color: #63859B;
-    margin-right: 16px;
 }
 .blog__date {
     font-size: 0.8em;
     font-weight: 600;
     font-style: italic;
     margin: 24px 0 32px;
+}
+.blog__date i {
+    color: #63859B;
+    margin-right: 16px;
+}
+.blog__category i {
+    margin-right: 8px;
 }
 .blog__readmore {
     padding: 12px 24px;
@@ -888,8 +898,20 @@ main.page {
 .blog__search button:hover {
     background-color: #3B505D;
 }
+.blog__categories a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.blog__categories a:hover {
+    color: #63859B;
+}
 .blog__small {
     margin-top: 32px;
+}
+.blog__small h3 a {
+    color: inherit;
+    text-decoration: none;
 }
 .blog__small .blog__date {
     margin: 8px 0 16px;

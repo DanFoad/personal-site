@@ -37,8 +37,17 @@ else {
         require_once __DIR__ . '/template/header.php';
         
         if (isset($routes[1])) {
-            $blogURI = $routes[1];
-            include_once __DIR__ . '/blog.php' ;
+            if ($routes[1] === 'category') {
+                if (isset($routes[2])) {
+                    $blogCategory = $routes[2];
+                    include_once __DIR__ . '/blog.php' ;
+                } else {
+                    header('Location: /blog/', true, 302);
+                }
+            } else {
+                $blogURI = $routes[1];
+                include_once __DIR__ . '/blog.php' ;
+            }
         } else {
             include_once __DIR__ . '/blog.php' ;
         }
