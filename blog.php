@@ -86,7 +86,7 @@
         foreach ($dates as $date) {
             $month = date('F Y', strtotime($date['postDate']));
             if (!strpos($months, $month)) {
-                $months .= '<li>' . $month . '</li>';
+                $months .= '<li><a href="/blog/archives/' . urlify($month) . '">' . $month . '</a></li>';
             }
         }
         $replace = '{{archives}}';
@@ -105,7 +105,7 @@
             $tags_split = explode(',', $rawtag['postTags']);
             foreach ($tags_split as $tag) {
                 if (!strpos($tags, $tag)) {
-                    $tags .= '<span>' . $tag . '</span>';
+                    $tags .= '<a href="/blog/tagged/' . urlify($tag) . '/">' . $tag . '</a>';
                 }
             }
         }
@@ -160,7 +160,7 @@
             
             $tags = '';
             foreach (explode(',', $post['postTags']) as $tag) {
-                $tags .= '<span>' . $tag . '</span>';
+                $tags .= '<a href="/blog/tagged/' . urlify($tag) . '/">' . $tag . '</a>';
             }
             
             $with = array($post['postTitle'], $post['postContent'], date('jS M Y', strtotime($post['postDate'])), $post['postCategory'], $tags, $post['postID'], $post_previous['postTitle'], date('jS M Y', strtotime($post_previous['postDate'])), $post_previous['postURI'], $post_next['postTitle'], date('jS M Y', strtotime($post_next['postDate'])), $post_next['postURI'], $hide_previous, $hide_next, $templateSidebar);
@@ -191,7 +191,7 @@
             foreach ($posts as $post) {
                 $tags = '';
                 foreach (explode(',', $post['postTags']) as $tag) {
-                    $tags .= '<span>' . $tag . '</span>';
+                    $tags .= '<a href="/blog/tagged/' . urlify($tag) . '/">' . $tag . '</a>';
                 }
                 $with = array($post['postTitle'], substrwords($post['postContent'], 255), date('jS M Y', strtotime($post['postDate'])), $post['postID'], $post['postURI'], $tags, $post['postCategory']);
 
@@ -201,6 +201,108 @@
             }
             
             echo str_replace(array('{{posts}}', '{{sidebar}}', '{{title_category}}'), array($templatePosts, $templateSidebar, ' - ' . ucwords($category)), $template);
+            
+        // Archives blog pages
+        } else if (isset($blogDate)) {
+            
+            $format = "d F-Y H:i:s";
+            $dateStart = DateTime::createFromFormat($format, '1 ' . $blogDate . ' 00:00:00');
+            $dateEnd = DateTime::createFromFormat($format, '1 ' . $blogDate . ' 00:00:00');
+            
+            $dateEnd->modify('first day of next month');
+            $dateEnd->modify('-1 second');
+            
+            
+            $sql = 'SELECT * FROM blog_posts WHERE postDate between :dateStart and :dateEnd ORDER BY postDate DESC LIMIT 10';
+            $sth = $db->prepare($sql);
+            $sth->execute(array(':dateStart' => $dateStart->format('Y-m-d H:i:s'), ':dateEnd' => $dateEnd->format('Y-m-d H:i:s')));
+            $posts = $sth->fetchAll();
+            
+            $template = file_get_contents(__DIR__ . '/template/blog.html');
+            
+            $templatePosts = '<h3 class="blog__description">Posts from ' . ucwords(explode('-', $blogDate)[0]) . ' ' . explode('-', $blogDate)[1] . '</h3><div class="blog__footer--links"><a class="blog__readmore" href="/blog/">All Posts</a></div>';
+            
+            $replace = array('{{title}}', '{{content}}', '{{date}}', '{{id}}', '{{uri}}', '{{tags}}', '{{category}}');
+            foreach ($posts as $post) {
+                $tags = '';
+                foreach (explode(',', $post['postTags']) as $tag) {
+                    $tags .= '<a href="/blog/tagged/' . urlify($tag) . '/">' . $tag . '</a>';
+                }
+                $with = array($post['postTitle'], substrwords($post['postContent'], 255), date('jS M Y', strtotime($post['postDate'])), $post['postID'], $post['postURI'], $tags, $post['postCategory']);
+
+                $templateFragment = file_get_contents(__DIR__ . '/template/blog-fragment.html');
+
+                $templatePosts .= str_replace($replace, $with, $templateFragment);
+            }
+            
+            echo str_replace(array('{{posts}}', '{{sidebar}}', '{{title_category}}'), array($templatePosts, $templateSidebar, ''), $template);
+        
+        // Tagged blog pages
+        } else if (isset($blogTagged)) {
+            
+            $blogTagged = str_replace('-', ' ', $blogTagged);
+            
+            $sql = 'SELECT *
+            FROM blog_posts
+            WHERE postTags LIKE concat("%", :tag, "%")
+            ORDER BY postDate DESC
+            LIMIT 10';
+            $sth = $db->prepare($sql);
+            $sth->execute(array(':tag' => $blogTagged));
+            $posts = $sth->fetchAll();
+            
+            $template = file_get_contents(__DIR__ . '/template/blog.html');
+            
+            $templatePosts = '<h3 class="blog__description">Posts tagged: <div class="blog__tags"><a href="/blog/tagged/' . $blogTagged . '/">' . $blogTagged . '</a></div></h3><div class="blog__footer--links"><a class="blog__readmore" href="/blog/">All Posts</a></div>';
+            
+            $replace = array('{{title}}', '{{content}}', '{{date}}', '{{id}}', '{{uri}}', '{{tags}}', '{{category}}');
+            foreach ($posts as $post) {
+                $tags = '';
+                foreach (explode(',', $post['postTags']) as $tag) {
+                    $tags .= '<a href="/blog/tagged/' . urlify($tag) . '/">' . $tag . '</a>';
+                }
+                $with = array($post['postTitle'], substrwords($post['postContent'], 255), date('jS M Y', strtotime($post['postDate'])), $post['postID'], $post['postURI'], $tags, $post['postCategory']);
+
+                $templateFragment = file_get_contents(__DIR__ . '/template/blog-fragment.html');
+
+                $templatePosts .= str_replace($replace, $with, $templateFragment);
+            }
+            
+            echo str_replace(array('{{posts}}', '{{sidebar}}', '{{title_category}}'), array($templatePosts, $templateSidebar, ''), $template);
+            
+        // Search blog pages
+        } else if (isset($blogSearch)) {
+            
+            $blogSearch = str_replace('%20', ' ', $blogSearch);
+            $blogSearch = preg_replace("/[^A-Za-z0-9 ]/", '', $blogSearch);
+            
+            $sql = 'SELECT *
+            FROM blog_posts
+            WHERE postTitle LIKE concat("%", :search, "%")
+            ORDER BY postDate DESC
+            LIMIT 10';
+            $sth = $db->prepare($sql);
+            $sth->execute(array(':search' => $blogSearch));
+            $posts = $sth->fetchAll();
+            
+            $template = file_get_contents(__DIR__ . '/template/blog.html');
+            
+            $templatePosts = '<h3 class="blog__description">Posts containing: \'' . $blogSearch . '\'</h3><div class="blog__footer--links"><a class="blog__readmore" href="/blog/">All Posts</a></div>';
+            
+            $replace = array('{{title}}', '{{content}}', '{{date}}', '{{id}}', '{{uri}}', '{{tags}}', '{{category}}');
+            foreach ($posts as $post) {
+                $tags = '';
+                foreach (explode(',', $post['postTags']) as $tag) {
+                    $tags .= '<a href="/blog/tagged/' . urlify($tag) . '/">' . $tag . '</a>';
+                }
+                $with = array($post['postTitle'], substrwords($post['postContent'], 255), date('jS M Y', strtotime($post['postDate'])), $post['postID'], $post['postURI'], $tags, $post['postCategory']);
+
+                $templateFragment = file_get_contents(__DIR__ . '/template/blog-fragment.html');
+
+                $templatePosts .= str_replace($replace, $with, $templateFragment);
+            }
+            
+            echo str_replace(array('{{posts}}', '{{sidebar}}', '{{title_category}}'), array($templatePosts, $templateSidebar, ''), $template);
             
         // All Blogs Page
         } else {
@@ -220,7 +322,7 @@
             foreach ($posts as $post) {
                 $tags = '';
                 foreach (explode(',', $post['postTags']) as $tag) {
-                    $tags .= '<span>' . $tag . '</span>';
+                    $tags .= '<a href="/blog/tagged/' . urlify($tag) . '/">' . $tag . '</a>';
                 }
                 $with = array($post['postTitle'], substrwords($post['postContent'], 255), date('jS M Y', strtotime($post['postDate'])), $post['postID'], $post['postURI'], $tags, $post['postCategory']);
 

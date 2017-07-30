@@ -1,7 +1,7 @@
 <aside class="blog__sidebar">
     <div class="blog__search">
         <div class="blog__search--container">
-            <input type="text" placeholder="Search all blogs..."><button><i class="fa fa-search"></i></button>
+            <input id="blog__search" type="text" placeholder="Search all posts..."><button class="blog__search--submit"><i class="fa fa-search"></i></button>
         </div>
     </div>
     <div class="blog__categories">
@@ -25,3 +25,19 @@
         <div class="blog__tags--container">{{tags}}</div>
     </div>
 </aside>
+
+
+<script>
+    $("#blog__search").on('keyup', function(e) {
+        var code = e.which;
+        if (code == 13) e.preventDefault();
+        if (code == 13 || code == 32 || code == 188 || code == 186) {
+            var searchstring = $("#blog__search").val();
+            window.location.href = "/blog/search/" + searchstring;
+        }
+    });
+    $(".blog__search--submit").on('click', function() {
+        var searchstring = $("#blog__search").val();
+        window.location.href = "/blog/search/" + searchstring;
+    });
+</script>

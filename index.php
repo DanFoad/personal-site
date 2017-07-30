@@ -44,6 +44,27 @@ else {
                 } else {
                     header('Location: /blog/', true, 302);
                 }
+            } else if ($routes[1] === 'archives') {
+                if (isset($routes[2])) {
+                    $blogDate = $routes[2];
+                    include_once __DIR__ . '/blog.php' ;
+                } else {
+                    header('Location: /blog/', true, 302);
+                }
+            } else if ($routes[1] === 'tagged') {
+                if (isset($routes[2])) {
+                    $blogTagged = $routes[2];
+                    include_once __DIR__ . '/blog.php';
+                } else {
+                    header('Location: /blog/', true, 302);
+                }
+            } else if ($routes[1] === 'search') {
+                if (isset($routes[2])) {
+                    $blogSearch = $routes[2];
+                    include_once __DIR__ . '/blog.php' ;
+                } else {
+                    header('Location: /blog/', true, 302);
+                }
             } else {
                 $blogURI = $routes[1];
                 include_once __DIR__ . '/blog.php' ;

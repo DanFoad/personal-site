@@ -771,6 +771,12 @@ main.page {
 .blog .main__title {
     margin-bottom: 0;
 }
+.blog__description {
+    margin-top: 32px;
+}
+.blog__description .blog__tags a {
+    vertical-align: top;
+}
 .blog__posts {
     flex-basis: 66.66667%;
     padding: 0 16px;
@@ -898,12 +904,12 @@ main.page {
 .blog__search button:hover {
     background-color: #3B505D;
 }
-.blog__categories a {
+.blog__categories a, .blog__archives a {
     color: inherit;
     text-decoration: none;
     transition: color 0.2s;
 }
-.blog__categories a:hover {
+.blog__categories a:hover, .blog__archives a:hover {
     color: #63859B;
 }
 .blog__small {
@@ -916,10 +922,13 @@ main.page {
 .blog__small .blog__date {
     margin: 8px 0 16px;
 }
+.blog__tags {
+    display: inline-block;
+}
 .blog__tags--container {
     padding-top: 24px;
 }
-.blog__tags span {
+.blog__tags a {
     background-color: #CCCCCC;
     color: #888888;
     text-transform: uppercase;
@@ -929,10 +938,10 @@ main.page {
     margin-right: 8px;
     border-radius: 4px;
     font-weight: 600;
-    cursor: pointer;
+    text-decoration: none;
     transition: all 0.2s;
 }
-.blog__tags span:hover {
+.blog__tags a:hover {
     background: #63859B;
     color: #FFFFFF;
 }
@@ -1163,6 +1172,11 @@ footer img {
 }
 .nav__container a:visited {
     color: #63859B;
+}
+@media all and (max-width: 720px) {
+    .footer .nav__container {
+        width: auto;
+    }
 }
 
 /**** LIGHTBOX ****/
