@@ -35,6 +35,9 @@
 
     require_once __DIR__ . "/includes/config.php";
 
+    include_once __DIR__ . "/Parsedown.php";
+    $Parsedown = new Parsedown();
+
     try {
         
         // Sidebar
@@ -104,8 +107,9 @@
         foreach ($rawtags as $rawtag) {
             $tags_split = explode(',', $rawtag['postTags']);
             foreach ($tags_split as $tag) {
-                if (!strpos($tags, $tag)) {
-                    $tags .= '<a href="/blog/tagged/' . urlify($tag) . '/">' . $tag . '</a>';
+                $tag = urlify(trim($tag));
+                if (!strpos($tags, '>' . $tag . '<')) {
+                    $tags .= '<a href="/blog/tagged/' . $tag . '/">' . $tag . '</a>';
                 }
             }
         }
@@ -160,10 +164,13 @@
             
             $tags = '';
             foreach (explode(',', $post['postTags']) as $tag) {
+                $tag = trim($tag);
                 $tags .= '<a href="/blog/tagged/' . urlify($tag) . '/">' . $tag . '</a>';
             }
             
-            $with = array($post['postTitle'], $post['postContent'], date('jS M Y', strtotime($post['postDate'])), $post['postCategory'], $tags, $post['postID'], $post_previous['postTitle'], date('jS M Y', strtotime($post_previous['postDate'])), $post_previous['postURI'], $post_next['postTitle'], date('jS M Y', strtotime($post_next['postDate'])), $post_next['postURI'], $hide_previous, $hide_next, $templateSidebar);
+            $content = $Parsedown->text($post['postContent']);
+            
+            $with = array($post['postTitle'], $content, date('jS M Y', strtotime($post['postDate'])), '<a href="/blog/category/' . urlify($post['postCategory']) . '">' . $post['postCategory'] . '</a>', $tags, $post['postID'], $post_previous['postTitle'], date('jS M Y', strtotime($post_previous['postDate'])), $post_previous['postURI'], $post_next['postTitle'], date('jS M Y', strtotime($post_next['postDate'])), $post_next['postURI'], $hide_previous, $hide_next, $templateSidebar);
             
             $template = file_get_contents(__DIR__ . '/template/blogpost.html');
             
@@ -191,9 +198,10 @@
             foreach ($posts as $post) {
                 $tags = '';
                 foreach (explode(',', $post['postTags']) as $tag) {
+                    $tag = trim($tag);
                     $tags .= '<a href="/blog/tagged/' . urlify($tag) . '/">' . $tag . '</a>';
                 }
-                $with = array($post['postTitle'], substrwords($post['postContent'], 255), date('jS M Y', strtotime($post['postDate'])), $post['postID'], $post['postURI'], $tags, $post['postCategory']);
+                $with = array($post['postTitle'], substrwords($post['postContent'], 255), date('jS M Y', strtotime($post['postDate'])), $post['postID'], $post['postURI'], $tags, '<a href="/blog/category/' . urlify($post['postCategory']) . '/">' . $post['postCategory'] . '</a>');
 
                 $templateFragment = file_get_contents(__DIR__ . '/template/blog-fragment.html');
 
@@ -226,9 +234,10 @@
             foreach ($posts as $post) {
                 $tags = '';
                 foreach (explode(',', $post['postTags']) as $tag) {
+                    $tag = trim($tag);
                     $tags .= '<a href="/blog/tagged/' . urlify($tag) . '/">' . $tag . '</a>';
                 }
-                $with = array($post['postTitle'], substrwords($post['postContent'], 255), date('jS M Y', strtotime($post['postDate'])), $post['postID'], $post['postURI'], $tags, $post['postCategory']);
+                $with = array($post['postTitle'], substrwords($post['postContent'], 255), date('jS M Y', strtotime($post['postDate'])), $post['postID'], $post['postURI'], $tags, '<a href="/blog/category/' . urlify($post['postCategory']) . '/">' . $post['postCategory'] . '</a>');
 
                 $templateFragment = file_get_contents(__DIR__ . '/template/blog-fragment.html');
 
@@ -259,9 +268,10 @@
             foreach ($posts as $post) {
                 $tags = '';
                 foreach (explode(',', $post['postTags']) as $tag) {
+                    $tag = trim($tag);
                     $tags .= '<a href="/blog/tagged/' . urlify($tag) . '/">' . $tag . '</a>';
                 }
-                $with = array($post['postTitle'], substrwords($post['postContent'], 255), date('jS M Y', strtotime($post['postDate'])), $post['postID'], $post['postURI'], $tags, $post['postCategory']);
+                $with = array($post['postTitle'], substrwords($post['postContent'], 255), date('jS M Y', strtotime($post['postDate'])), $post['postID'], $post['postURI'], $tags, '<a href="/blog/category/' . urlify($post['postCategory']) . '/">' . $post['postCategory'] . '</a>');
 
                 $templateFragment = file_get_contents(__DIR__ . '/template/blog-fragment.html');
 
@@ -293,9 +303,10 @@
             foreach ($posts as $post) {
                 $tags = '';
                 foreach (explode(',', $post['postTags']) as $tag) {
+                    $tag = trim($tag);
                     $tags .= '<a href="/blog/tagged/' . urlify($tag) . '/">' . $tag . '</a>';
                 }
-                $with = array($post['postTitle'], substrwords($post['postContent'], 255), date('jS M Y', strtotime($post['postDate'])), $post['postID'], $post['postURI'], $tags, $post['postCategory']);
+                $with = array($post['postTitle'], substrwords($post['postContent'], 255), date('jS M Y', strtotime($post['postDate'])), $post['postID'], $post['postURI'], $tags, '<a href="/blog/category/' . urlify($post['postCategory']) . '/">' . $post['postCategory'] . '</a>');
 
                 $templateFragment = file_get_contents(__DIR__ . '/template/blog-fragment.html');
 
@@ -322,9 +333,10 @@
             foreach ($posts as $post) {
                 $tags = '';
                 foreach (explode(',', $post['postTags']) as $tag) {
+                    $tag = trim($tag);
                     $tags .= '<a href="/blog/tagged/' . urlify($tag) . '/">' . $tag . '</a>';
                 }
-                $with = array($post['postTitle'], substrwords($post['postContent'], 255), date('jS M Y', strtotime($post['postDate'])), $post['postID'], $post['postURI'], $tags, $post['postCategory']);
+                $with = array($post['postTitle'], substrwords($post['postContent'], 255), date('jS M Y', strtotime($post['postDate'])), $post['postID'], $post['postURI'], $tags, '<a href="/blog/category/' . urlify($post['postCategory']) . '/">' . $post['postCategory'] . '</a>');
 
                 $templateFragment = file_get_contents(__DIR__ . '/template/blog-fragment.html');
 

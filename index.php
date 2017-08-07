@@ -3,6 +3,8 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+session_start();
+
 function getCurrentUri() {
     $basepath = implode('/', array_slice(explode('/', $_SERVER['SCRIPT_NAME']), 0, -1)) . '/';
         $uri = substr($_SERVER['REQUEST_URI'], strlen($basepath));
@@ -74,6 +76,12 @@ else {
         }
         
         require_once __DIR__ .'/template/footer.php';
+    }
+    
+    if ($routes[0] == 'post') {
+        require_once __DIR__ . '/template/header.php';
+        include_once __DIR__ . '/post.php';
+        require_once __DIR__ . '/template/footer.php';
     }
     
 }
