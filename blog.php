@@ -3,36 +3,6 @@
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
 
-    function substrwords($text, $maxchar, $end='...') {
-        if (strlen($text) > $maxchar || $text == '') {
-            $words = preg_split('/\s/', $text);      
-            $output = '';
-            $i      = 0;
-            while (1) {
-                $length = strlen($output)+strlen($words[$i]);
-                if ($length > $maxchar) {
-                    break;
-                } 
-                else {
-                    $output .= " " . $words[$i];
-                    ++$i;
-                }
-            }
-            $output .= $end;
-        } 
-        else {
-            $output = $text;
-        }
-        return $output;
-    }
-
-    function urlify($text) {
-        $text = strtolower($text);
-        $text = preg_replace("/[^A-Za-z0-9 ]/", '', $text);
-        $text = preg_replace("/[ ]/", '-', $text);
-        return $text;
-    }
-
     require_once __DIR__ . "/includes/config.php";
 
     include_once __DIR__ . "/Parsedown.php";

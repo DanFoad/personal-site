@@ -1012,6 +1012,13 @@ main.page {
 .blog__post--hidden {
     visibility: hidden;
 }
+.blog__homepage.blog__footer--posts .blog__post {
+    padding-left: 16px;
+}
+.blog__homepage.blog__footer--posts .blog__post:last-child {
+    text-align: left;
+    border-left: 1px solid #E0E0E0;
+}
 @media all and (max-width: 720px) {
     .blog {
         flex-flow: column nowrap;
@@ -1021,6 +1028,12 @@ main.page {
     }
     .blog__sidebar {
         flex-basis: auto;
+    }
+    .blog__homepage {
+        flex-flow: column nowrap;
+    }
+    .blog__homepage.blog__footer--posts .blog__post:last-child {
+        border-left: 0;
     }
 }
 /**** TEMPLATE ****/
