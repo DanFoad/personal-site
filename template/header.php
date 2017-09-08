@@ -46,6 +46,7 @@
             <a href="/"><h1 class="nav__title"><img src="/favicon-96x96.png" alt="">Dan Foad</h1></a>
             <ul class="nav__links">
                 <li class="nav__link"><a href="/CV.pdf">CV</a></li>
+                <li class="nav__link"><a href="/blog/">Blog</a></li>
                 <li class="nav__link"><a href="https://github.com/DanFoad">GitHub</a></li>
                 <li class="nav__link"><a href="https://uk.linkedin.com/in/danfoad">LinkedIn</a></li>
                 <a href="/index.html#contact" class="nav__button">Contact Me</a>
