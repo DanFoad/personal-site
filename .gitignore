@@ -3,3 +3,5 @@ contact.php
 /projects/*.*
 /includes/dbconfig.php
 google3ca76257ba912abe.html
+/notes/config.php
+/notes/jwt_helper.php
