@@ -4,6 +4,8 @@ error_reporting(E_ALL);
 ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
 
+header('Content-Type: application/json');
+
 if (!isSecure()) {
     header("HTTP/1.1 426 Upgrade Required");
     header("Upgrade: TLS/1.0, HTTP/1.1");
@@ -14,23 +16,31 @@ if (!isSecure()) {
 require_once 'config.php';
 require_once 'jwt_helper.php';
 
-if (!isset($_POST['method'])) {
+$data = json_decode(file_get_contents('php://input'), true);
+
+if (!isset($data['method'])) {
     header("HTTP/1.1 400 Bad Request");
-    echo "<h1>HTTP 400 Bad Request</h1><br>Invalid request, try again with different parameters";
+    $response = array();
+    $response['success'] = false;
+    $response['message'] = 'No action specified';
+    echo json_encode($response);
     die();
 }
 
-$method = $_POST['method'];
+$method = $data['method'];
 
 switch($method) {
-    case 'start_session': startSession($db); break;
-    case 'get_notes': getNotes($db); break;
-    case 'get_tags': getTags($db); break;
-    case 'update_note': updateNote($db); break;
-    case 'create_note': createNote($db); break;
+    case 'start_session': startSession($db, $data); break;
+    case 'get_notes': getNotes($db, $data); break;
+    case 'get_tags': getTags($db, $data); break;
+    case 'update_note': updateNote($db, $data); break;
+    case 'create_note': createNote($db, $data); break;
     default: 
         header("HTTP/1.1 400 Bad Request");
-        echo "<h1>HTTP 400 Bad Request</h1><br>Invalid request, try again with different parameters";
+        $response = array();
+        $response['success'] = false;
+        $response['message'] = 'No action specified';
+        echo json_encode($response);
         die();
         break;
 }
@@ -41,14 +51,18 @@ function isSecure() {
       || $_SERVER['SERVER_PORT'] == 443;
   }
 
-function startSession($db) {
-    if (!isset($_POST['username']) || !isset($_POST['password'])) {
+function startSession($db, $data) {
+    if (!isset($data['username']) || !isset($data['password'])) {
         header("HTTP/1.1 401 Authorisation Required");
+        $response = array();
+        $response['success'] = false;
+        $response['message'] = 'No username/password specified';
+        echo json_encode($response);
         die();
     }
 
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $username = $data['username'];
+    $password = $data['password'];
 
     $sql = 'SELECT id, username, password
             FROM users
@@ -58,6 +72,10 @@ function startSession($db) {
     $results = $sth->fetchAll();
     if (count($results) == 0) {
         header("HTTP/1.1 401 Authorisation Required");
+        $response = array();
+        $response['success'] = false;
+        $response['message'] = 'Invalid username and/or password';
+        echo json_encode($response);
         die();
     } 
     
@@ -65,6 +83,10 @@ function startSession($db) {
     
     if (!password_verify($password, $db_pass)) {
         header("HTTP/1.1 401 Authorisation Required");
+        $response = array();
+        $response['success'] = false;
+        $response['message'] = 'Invalid username and/or password';
+        echo json_encode($response);
         die();
     }
 
@@ -76,18 +98,18 @@ function startSession($db) {
 }
 
 function getID() {
-    if (!isset($_POST['token'])) {
+    if (!isset($data['token'])) {
         header("HTTP/1.1 401 Authorisation Required");
         die();
     }
 
-    $token = JWT::decode($_POST['token'], SERVER_KEY);
+    $token = JWT::decode($data['token'], SERVER_KEY);
     $id = $token->id;
 
     return $id;
 }
 
-function getNotes($db) {
+function getNotes($db, $data) {
     $id = getID();
 
     $sql = 'SELECT id, name, date, text
@@ -100,7 +122,7 @@ function getNotes($db) {
     echo json_encode($results);
 }
 
-function getTags($db) {
+function getTags($db, $data) {
     $id = getID();
 
     $sql = 'SELECT id, name
@@ -113,16 +135,19 @@ function getTags($db) {
     echo json_encode($results);
 }
 
-function updateNote($db) {
+function updateNote($db, $data) {
     $id = getID();
 
-    if (!isset($_POST['note'])) {
+    if (!isset($data['note'])) {
         header("HTTP/1.1 400 Bad Request");
-        echo "<h1>HTTP 400 Bad Request</h1><br>Invalid request, try again with different parameters";
+        $response = array();
+        $response['success'] = false;
+        $response['message'] = 'No note specified';
+        echo json_encode($response);
         die();
     }
 
-    $note = json_decode($_POST['note'], true);
+    $note = json_decode($data['note'], true);
     
     $sql = 'UPDATE notes
             SET name = :name, tag = :tag, date = :date, text = :text
@@ -140,16 +165,19 @@ function updateNote($db) {
     }
 }
 
-function createNote($db) {
+function createNote($db, $data) {
     $id = getID();
 
-    if (!isset($_POST['note'])) {
+    if (!isset($data['note'])) {
         header("HTTP/1.1 400 Bad Request");
-        echo "<h1>HTTP 400 Bad Request</h1><br>Invalid request, try again with different parameters";
+        $response = array();
+        $response['success'] = false;
+        $response['message'] = 'No note specified';
+        echo json_encode($response);
         die();
     }
 
-    $note = json_decode($_POST['note'], true);
+    $note = json_decode($data['note'], true);
     
     $sql = 'INSERT INTO notes (name, user_id, tag, date, text)
             VALUES (:name, :user_id, :tag, :date, :text)';
