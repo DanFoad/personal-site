@@ -69,7 +69,7 @@ function startSession($db, $data) {
             WHERE username = :username';
     $sth = $db->prepare($sql);
     $sth->execute(array(':username' => $username));
-    $results = $sth->fetchAll();
+    $results = $sth->fetchAll(PDO::FETCH_ASSOC);
     if (count($results) == 0) {
         header("HTTP/1.1 401 Authorisation Required");
         $response = array();
@@ -97,9 +97,14 @@ function startSession($db, $data) {
     echo JWT::encode($token, SERVER_KEY);
 }
 
-function getID() {
+function getID($data) {
     if (!isset($data['token'])) {
         header("HTTP/1.1 401 Authorisation Required");
+        $response = array();
+        $response['success'] = false;
+        $response['originalData'] = json_encode($data);
+        $response['message'] = 'No token specified';
+        echo json_encode($response);
         die();
     }
 
@@ -110,33 +115,33 @@ function getID() {
 }
 
 function getNotes($db, $data) {
-    $id = getID();
+    $id = getID($data);
 
-    $sql = 'SELECT id, name, date, text
+    $sql = 'SELECT id, name, tag, date, text
             FROM notes
             WHERE user_id = :user_id';
     $sth = $db->prepare($sql);
     $sth->execute(array(':user_id' => $id));
-    $results = $sth->fetchAll();
+    $results = $sth->fetchAll(PDO::FETCH_ASSOC);
 
     echo json_encode($results);
 }
 
 function getTags($db, $data) {
-    $id = getID();
+    $id = getID($data);
 
     $sql = 'SELECT id, name
             FROM tag
             WHERE user_id = :user_id';
     $sth = $db->prepare($sql);
     $sth->execute(array(':user_id' => $id));
-    $results = $sth->fetchAll();
+    $results = $sth->fetchAll(PDO::FETCH_ASSOC);
 
     echo json_encode($results);
 }
 
 function updateNote($db, $data) {
-    $id = getID();
+    $id = getID($data);
 
     if (!isset($data['note'])) {
         header("HTTP/1.1 400 Bad Request");
@@ -147,7 +152,7 @@ function updateNote($db, $data) {
         die();
     }
 
-    $note = json_decode($data['note'], true);
+    $note = $data['note'];
     
     $sql = 'UPDATE notes
             SET name = :name, tag = :tag, date = :date, text = :text
@@ -166,7 +171,7 @@ function updateNote($db, $data) {
 }
 
 function createNote($db, $data) {
-    $id = getID();
+    $id = getID($data);
 
     if (!isset($data['note'])) {
         header("HTTP/1.1 400 Bad Request");
@@ -177,7 +182,7 @@ function createNote($db, $data) {
         die();
     }
 
-    $note = json_decode($data['note'], true);
+    $note = $data['note'];
     
     $sql = 'INSERT INTO notes (name, user_id, tag, date, text)
             VALUES (:name, :user_id, :tag, :date, :text)';
