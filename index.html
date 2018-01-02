@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,700">
-    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/main.css?v=1">
 
     <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
@@ -59,6 +59,7 @@
             <h1 class="nav__title"><img src="favicon-96x96.png" alt="">Dan Foad</h1>
             <ul class="nav__links">
                 <li class="nav__link"><a href="CV.pdf">CV</a></li>
+                <li class="nav__link"><a href="/blog/">Blog</a></li>
                 <li class="nav__link"><a href="https://github.com/DanFoad">GitHub</a></li>
                 <li class="nav__link"><a href="https://uk.linkedin.com/in/danfoad">LinkedIn</a></li>
                 <button class="nav__button smooth-scroll" data-to="contact">Contact Me</button>
@@ -72,104 +73,159 @@
             <h1 class="hero__title">Dan Foad.</h1>
             <h3 class="hero__subtitle">Freelance Web Developer, Prospective Software Engineer, Undergraduate student</h3>
             <button class="hero__cta smooth-scroll" data-to="contact"><span>Contact Me</span></button>
-            <div class="hero__scroll smooth-scroll" data-to="freelance"><i class="fa fa-angle-double-down"></i></div>
+            <div class="hero__scroll smooth-scroll" data-to="portfolio"><i class="fa fa-angle-double-down"></i></div>
         </section>
     </header>
 
     <main role="main" class="index">
-        <div id="freelance" class="container">
-            <h1 class="main__title"><span>Freelance Work</span></h1>
-            
+        <div id="portfolio" class="container">
+            <h1 class="main__title"><span>Portfolio</span></h1>
             <section class="projects">
+                <h2 class="projects__title"><span>Freelance Work</span></h2>
                 <div class="project">
                     <figure class="project__image"><img src="img/statscentral.png" alt=""></figure>
                     <div class="project__content">
                         <h3 class="project__title">StatsCentral</h3>
-                        <p class="project__description">Website devoted to the statistical representational of data for popular game, custom-built to client’s
-specifications, mobile responsive, built through agile methodologies. I was the
-primary developer, working closely with the client throughout the project.</p>
-                        <p class="project__skills">Skills:
+                        <p class="project__skills">
                             <a href="https://jquery.com/" class="project__skill">jQuery</a>
                             <a href="http://foundation.zurb.com/" class="project__skill">Foundation</a>
                             <a href="http://www.chartjs.org/" class="project__skill">Chart.js</a>
                             <a href="https://github.com/filamentgroup/tablesaw" class="project__skill">Tablesaw.js</a>
                             <a href="http://php.net/" class="project__skill">PHP</a>
-                            <a href="http://v2.wp-api.org/" class="project__skill">RESTful APIs</a>
+                        </p>
+                        <p class="project__description">Website devoted to the statistical representational of data for popular game, custom-built to client’s
+                                specifications, mobile responsive, built through agile methodologies. I was the
+                                primary developer, working closely with the client throughout the project.
                         </p>
                         <aside class="project__links">
                             <a href="/freelance/statscentral/" title="Visit Site"><i class="fa fa-external-link"></i>Visit Site</a><a href="https://github.com/DanFoad/statscentral" title="View Code"><i class="fa fa-github"></i>View Code</a>
                         </aside>
                     </div>
                 </div>
+                <div class="project">
+                    <figure class="project__image"><img src="img/burtonwaters.png" alt=""></figure>
+                    <div class="project__content">
+                        <h3 class="project__title">Burton Waters</h3>
+                        <p class="project__skills">
+                            <a href="https://jquery.com/" class="project__skill">jQuery</a>
+                            <a href="http://api.jquery.com/jquery.ajax/" class="project__skill">AJAX</a>
+                            <a href="https://getbootstrap.com/" class="project__skill">Bootstrap</a>
+                            <a href="https://www.joomla.org/" class="project__skill">Joomla</a>
+                            <a href="http://php.net/" class="project__skill">PHP</a>
+                        </p>
+                        <p class="project__description">Laid down foundations and framework of the interface layer between client-side
+                                and CMS leading up to release of new product line. Implemented a
+                                mobile-responsive AJAX-based email form for inquires. Developed child site
+                                <a href="https://www.boatsforsalenorfolk.com/">https://www.boatsforsalenorfolk.com/</a> using Bootstrap.                                
+                        </p>
+                        <aside class="project__links">
+                            <a href="https://burtonwaters.co.uk/" title="Visit Site"><i class="fa fa-external-link"></i>Visit Site</a>
+                        </aside>
+                    </div>
+                </div>
+                <div class="project">
+                    <figure class="project__image"><img src="img/word-to-html.png" alt=""></figure>
+                    <div class="project__content">
+                        <h3 class="project__title">WordToHTML</h3>
+                        <p class="project__skills">
+                            <a href="http://www.adobe.com/uk/products/photoshop.html" class="project__skill">Adobe Photoshop</a>
+                        </p>
+                        <p class="project__description">Designed a full-page redesign of a WordToHTML service for a client. Worked closely with the client and developer to make sure that the completed design was both aesthetically pleasing and possible to develop.</p>
+                        <aside class="project__links">
+                            <a href="/img/word-to-html-full.png" title="View Design"><i class="fa fa-picture-o"></i>View Design</a><a href="/files/wordtohtml.psd" title="Download PSD"><i class="fa fa-file-image-o"></i>Download PSD</a>
+                        </aside>
+                    </div>
+                </div>
             </section>
-
-        </div>
-        <div id="projects" class="container">
-            <h1 class="main__title"><span>Projects</span></h1>
-
             <section class="projects">
+                <h2 class="projects__title"><span>Web Apps</span></h2>
                 <div class="project">
                     <figure class="project__image"><img src="img/austin-crime-zone.png" alt=""></figure>
                     <div class="project__content">
                         <h3 class="project__title">Austin Crime Zone</h3>
-                        <p class="project__description">Web app that allows you to find out how dangerous a particular zone is within Austin, TX. Apply filters to refine incident data to your needs.</p>
-                        <p class="project__skills">Skills:
+                        <p class="project__skills">
                             <a href="https://jquery.com/" class="project__skill">jQuery</a>
                             <a href="https://developers.google.com/maps/" class="project__skill">Google Maps API</a>
                             <a href="http://api.jquery.com/jquery.ajax/" class="project__skill">AJAX</a>
                             <a href="https://qunitjs.com/" class="project__skill">QUnit</a>
                         </p>
+                        <p class="project__description">Web app that allows you to find out how dangerous a particular zone is within Austin, TX. Apply filters to refine incident data to your needs.</p>
                         <aside class="project__links">
                             <a href="/projects/austin-crime-zone/" title="Visit Site"><i class="fa fa-external-link"></i>Visit Site</a><a href="https://github.com/DanFoad/austin-crime-zone" title="View Code"><i class="fa fa-github"></i>View Code</a>
                         </aside>
                     </div>
-                    <hr class="project__separator">
-                </div>
-                <div class="project">
-                    <figure class="project__image"><img src="img/hold-buttons.png" alt=""></figure>
-                    <div class="project__content">
-                        <h3 class="project__title">Hold-To-Confirm Buttons</h3>
-                        <p class="project__description">CSS designs of hold-to-confirm buttons that offer an alternative to modal confirmations by having the user hold the button down.</p>
-                        <p class="project__skills">Skills:
-                            <a href="https://jquery.com/" class="project__skill">jQuery</a>
-                        </p>
-                        <aside class="project__links">
-                            <a href="https://danfoad.github.io/hold-buttons/" title="Visit Site"><i class="fa fa-external-link"></i>Visit Site</a><a href="https://github.com/DanFoad/hold-buttons" title="View Code"><i class="fa fa-github"></i>View Code</a>
-                        </aside>
-                    </div>
-                    <hr class="project__separator">
                 </div>
                 <div class="project">
                     <figure class="project__image"><img src="img/obesity-poverty-london.png" alt=""></figure>
                     <div class="project__content">
-                        <h3 class="project__title">Obesity-Poverty London</h3>
-                        <p class="project__description">A webapp to show the interesting correlation between obesity and poverty rates using open-source data about the boroughs of London and an interactive map.</p>
-                        <p class="project__skills">Skills:
+                        <h3 class="project__title">Obesity Poverty London</h3>
+                        <p class="project__skills">
                             <a href="https://jquery.com/" class="project__skill">jQuery</a>
                             <a href="https://developers.google.com/maps/" class="project__skill">Google Maps API</a>
                             <a href="http://api.jquery.com/jquery.ajax/" class="project__skill">AJAX</a>
                         </p>
+                        <p class="project__description">A webapp to show the interesting correlation between obesity and poverty rates using open-source data about the boroughs of London and an interactive map.</p>
                         <aside class="project__links" title="Visit Site">
                             <a href="/projects/obesity-poverty-london/"><i class="fa fa-external-link"></i>Visit Site</a><a href="https://github.com/DanFoad/obesity-poverty-london" title="View Code"><i class="fa fa-github"></i>View Code</a>
                         </aside>
                     </div>
-                    <hr class="project__separator">
                 </div>
                 <div class="project">
                     <figure class="project__image"><img src="img/book-lipsum.png" alt=""></figure>
                     <div class="project__content">
                         <h3 class="project__title">Book Lipsum</h3>
-                        <p class="project__description">Replace your standard Lorem Ipsum filler text with passages from popular classic novels such as A Tale of Two Cities by Charles Dickens.</p>
-                        <p class="project__skills">Skills:
+                        <p class="project__skills">
                             <a href="https://jquery.com/" class="project__skill">jQuery</a>
                         </p>
+                        <p class="project__description">Replace your standard Lorem Ipsum filler text with passages from popular classic novels such as A Tale of Two Cities by Charles Dickens.</p>
                         <aside class="project__links">
                             <a href="https://danfoad.github.io/book-lipsum/" title="Visit Site"><i class="fa fa-external-link"></i>Visit Site</a><a href="https://github.com/DanFoad/book-lipsum" title="View Code"><i class="fa fa-github"></i>View Code</a>
                         </aside>
                     </div>
                 </div>
             </section>
-
+            <section class="projects">
+                <h2 class="projects__title"><span>Utilities</span></h2>
+                <div class="project">
+                    <figure class="project__image"><img src="img/volume-meter.png" alt=""></figure>
+                    <div class="project__content">
+                        <h3 class="project__title">Volume Meter</h3>
+                        <p class="project__skills">
+                            <a href="https://java.com/" class="project__skill">Java</a>
+                        </p>
+                        <p class="project__description">Java utility that takes microphone input, loads a small frame in realtime, performs an RMS calculation on that frame in order to get a relative volume level and displays that as a series of bars.</p>
+                        <aside class="project__links">
+                            <a href="/blog/volume-meter-for-microphone-input-volume/" title="Read Post"><i class="fa fa-file-text-o"></i>Read Post</a><a href="https://github.com/DanFoad/volumemeter" title="View Code"><i class="fa fa-github"></i>View Code</a>
+                        </aside>
+                    </div>
+                </div>
+                <div class="project">
+                    <figure class="project__image"><img src="img/clipboard-history.png" alt=""></figure>
+                    <div class="project__content">
+                        <h3 class="project__title">Clipboard History</h3>
+                        <p class="project__skills">
+                            <a href="https://java.com/" class="project__skill">Java</a>
+                        </p>
+                        <p class="project__description">Java utility that keeps track of text that has been copied to the clipboard and allows you to quickly grab the most recent 10 snippets from the taskbar icon. Also exports the history to a file on shutdown.</p>
+                        <aside class="project__links">
+                            <a href="https://github.com/DanFoad/clipboardhistory" title="View Code"><i class="fa fa-github"></i>View Code</a>
+                        </aside>
+                    </div>
+                </div>
+                <div class="project">
+                    <figure class="project__image"><img src="img/crossout.png" alt=""></figure>
+                    <div class="project__content">
+                        <h3 class="project__title">crossout.js</h3>
+                        <p class="project__skills">
+                            <a href="https://www.javascript.com/" class="project__skill">JavaScript</a>
+                        </p>
+                        <p class="project__description">Diagonally crosses out text using data attribute. Settings for line thickness, rounding, colour etc can either be set locally in the span to crossout or globally when creating the Crossout object.</p>
+                        <aside class="project__links">
+                                <a href="/blog/crossing-out-text-diagonally/" title="Read Post"><i class="fa fa-file-text-o"></i>Read Post</a><a href="https://www.npmjs.com/package/crossout" title="View Code"><i class="fa fa-github"></i>View Code</a>
+                        </aside>
+                    </div>
+                </div>
+            </section>
         </div>
         <div id="recentblogs" class="container">
             <h1 class="main__title"><span>Recent Blog Posts</span></h1>

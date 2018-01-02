@@ -349,6 +349,11 @@ main.page {
     border-left: 50px solid #E0E0E0;
 }
 
+/**** PORTFOLIO ****/
+#portfolio {
+    padding-top: 32px;
+}
+
 /**** FREELANCE ****/
 #freelance {
     padding-top: 32px;
