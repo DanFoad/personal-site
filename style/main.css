@@ -992,11 +992,32 @@ main.page {
     visibility: hidden;
 }
 .blog__homepage.blog__footer--posts .blog__post {
+    padding: 24px 0;
     padding-left: 16px;
+    background-color: #425E70;
+    color: #FFFFFF;
+    margin-right: 8px;
 }
 .blog__homepage.blog__footer--posts .blog__post:last-child {
     text-align: left;
-    border-left: 1px solid #E0E0E0;
+    margin-left: 8px;
+    margin-right: 0;
+}
+.blog__homepage.blog__footer--posts .blog__readmore {
+    background-color: rgba(0, 0, 0, 0.15);
+    font-weight: 400;
+    transition: background-color 0.1s;
+}
+.blog__homepage.blog__footer--posts .blog__readmore:hover {
+    background-color: rgba(0, 0, 0, 0.25);
+}
+.blog__homepage.blog__footer--posts .blog__tags a {
+    background-color: rgba(0, 0, 0, 0.15);
+    color: #E0E1E3;
+    transition: background-color 0.1s;
+}
+.blog__homepage.blog__footer--posts .blog__tags a:hover {
+    background-color: rgba(0, 0, 0, 0.25);
 }
 @media all and (max-width: 720px) {
     .blog {

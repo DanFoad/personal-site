@@ -6,13 +6,6 @@
     require_once __DIR__ . "/includes/config.php";
     require_once __DIR__ . "/includes/postconfig.php";
 
-    function urlify($text) {
-        $text = strtolower($text);
-        $text = preg_replace("/[^A-Za-z0-9 ]/", '', $text);
-        $text = preg_replace("/[ ]/", '-', $text);
-        return $text;
-    }
-
 
     if (isset($_POST['user']) && isset($_POST['password'])) {
         if ($_POST['user'] == ADMINUSER && hash('sha256', $_POST['password']) == ADMINHASH) {
