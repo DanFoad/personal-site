@@ -5,12 +5,12 @@
     <footer>
         <section class="container">
             <a href="/"><img src="/favicon-32x32.png" alt="" /></a>
-            &copy; 2017 - Dan Foad
+            &copy; 2018 - Dan Foad
 
             <div class="nav__container">
                 <ul>
-                    <li><a href="http://danfoad.co.uk">Home</a></li>
-                    <li><a href="http://danfoad.co.uk#contact">Contact Me</a></li>
+                    <li><a href="//danfoad.co.uk">Home</a></li>
+                    <li><a href="//danfoad.co.uk#contact">Contact Me</a></li>
                 </ul>
             </div>
         </section>

@@ -1167,17 +1167,15 @@ footer img {
     -webkit-filter: contrast(0);
     filter: contrast(0);
 }
+footer .container {
+    display: flex;
+}
 .nav__container {
     height: 64px;
-    width: 1024px;
+    max-width: 1024px;
+    flex: 1;
     display: inline-block;
-    margin: 0 auto;
     text-align: right;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
 }
 .nav__container ul {
     list-style: none;
